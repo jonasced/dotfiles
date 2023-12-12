@@ -52,7 +52,7 @@ return {
   -- Commenting
   {
     "numToStr/Comment.nvim",
-    dependencies = {
+dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
     config = function()
@@ -143,6 +143,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "windwp/nvim-ts-autotag",
+      "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
     build = function()
@@ -150,6 +151,17 @@ return {
     end,
     config = function()
       require("configs.treesitter").config()
+    end,
+  },
+
+  -- Dashboard
+  {
+    "goolord/alpha-nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("configs.alpha").config()
     end,
   },
 
@@ -215,7 +227,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "simrat39/rust-tools.nvim",
-      "Hoffs/omnisharp-extended-lsp.nvim",
+"Hoffs/omnisharp-extended-lsp.nvim",
       "Issafalcon/lsp-overloads.nvim",
     },
     config = function()
