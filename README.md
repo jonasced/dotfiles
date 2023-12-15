@@ -31,6 +31,8 @@ rcup -v
 - ripgrep
 - fd-find
 
+6. For some of the icons you need to setup NerdIcons. See github repository for that
+
 ## Notes
 
 ### Rust
@@ -48,3 +50,14 @@ cargo clippy --workspace --message-format=json --all-targets --manifest-path <pa
 You may run it manually and see where `clippy` got stuck. What may seem more surprising though is that using
 the built-in `check` instead of `clippy` is more resilient and can show errors in the file you are working
 with, while still having failed diagnostics elsewhere within the workspace.
+
+### Neovim
+:help is your friend. :helpgrep "<pattern>" is also very useful.
+
+#### Telescope
+live_grep_args
+find_files
+
+#### Jumps
+Jumps in neovim! Use CTRL-] to jump, CTRL-O for older and CTRL-I for newer in jump list. See jump list with :ju
+
