@@ -33,6 +33,8 @@ rcup -v
 
 6. For some of the icons you need to setup NerdIcons. See github repository for that
 
+7. For clipboard usage in Neovim, install xsel or something of the sort.
+
 ## Notes
 
 ### Rust
@@ -54,10 +56,18 @@ with, while still having failed diagnostics elsewhere within the workspace.
 ### Neovim
 :help is your friend. :helpgrep "<pattern>" is also very useful.
 
+#### Windows
+Guide below, long story short: CTRL-W is the keyword, navigation is obvious.
+Split on S, vertical on V, close on Q.
+For more -> :help window
+
+#### Explore files
+:Sexplore is neat for searching around in directories.
+:cd to move around (useful for changing telescope context)
+
 #### Telescope
 live_grep_args
 find_files
 
 #### Jumps
 Jumps in neovim! Use CTRL-] to jump, CTRL-O for older and CTRL-I for newer in jump list. See jump list with :ju
-
