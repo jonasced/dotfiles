@@ -3,8 +3,8 @@ local M = {}
 function M.config()
   local status_ok, lualine = pcall(require, "lualine")
   if status_ok then
-    vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-    local git_blame = require("gitblame")
+    -- vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+    -- local git_blame = require("gitblame")
     local config = {
       options = {
           disabled_filetypes = { "NvimTree", "neo-tree", "dashboard", "alpha" },
@@ -43,21 +43,10 @@ function M.config()
           },
           lualine_c = {
             {
-              git_blame.get_current_blame_text,
-              cond = git_blame.is_blame_text_available,
-            },
-            {
-              "lsp_progress",
-              spinner_symbols = {
-                "🌑 ",
-                "🌒 ",
-                "🌓 ",
-                "🌔 ",
-                "🌕 ",
-                "🌖 ",
-                "🌗 ",
-                "🌘 ",
-              },
+              "filename",
+              shorting_target = 40,
+              file_status = true,
+              path = 2,
             },
           },
           lualine_x = { "encoding", "fileformat", "filetype" },
@@ -65,12 +54,37 @@ function M.config()
           lualine_z = { "location" },
         },
         winbar = {
-          lualine_a = {},
-          lualine_b = {},
+          lualine_a = {
+            {
+              "mode",
+              fmt = function(str)
+                return str:sub(1, 1)
+              end,
+            },
+          },
+          lualine_b = {
+            {
+              "branch",
+              fmt = function(str)
+                return str:sub(1, 25)
+              end,
+            },
+            "diff",
+            {
+              "diagnostics",
+              symbols = {
+                error = "E ",
+                warn = "W ",
+                info = "H ",
+                hint = "H ",
+              },
+            },
+          },
           lualine_c = {
             {
               "filename",
-              path = 1,
+              file_status = true,
+              path = 2,
             },
           },
           lualine_x = {},
@@ -79,7 +93,24 @@ function M.config()
         },
         inactive_winbar = {
           lualine_a = {},
-          lualine_b = {},
+          lualine_b = {
+            {
+              "branch",
+              fmt = function(str)
+                return str:sub(1, 25)
+              end,
+            },
+            "diff",
+            {
+              "diagnostics",
+              symbols = {
+                error = "E ",
+                warn = "W ",
+                info = "H ",
+                hint = "H ",
+              },
+            },
+          },
           lualine_c = {
             {
               "filename",
