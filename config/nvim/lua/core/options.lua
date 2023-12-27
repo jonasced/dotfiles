@@ -5,6 +5,9 @@ local opt = vim.opt -- editor options (equivalent to using :set)
 -- Map leader
 g.mapleader = " "
 
+-- Python path
+g.python3_host_prog = '/home/jonas/dev/envs/neovim/bin/python3'
+
 -- Tabs and indentation
 opt.shiftwidth = 2 -- Number of space inserted for indentation
 opt.tabstop = 2 -- Number of space in a tab

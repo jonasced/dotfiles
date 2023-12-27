@@ -35,6 +35,8 @@ rcup -v
 
 7. For clipboard usage in Neovim, install xsel or something of the sort.
 
+8. For python usage, create a venv at the path specified by the python3_host_prog setting and install pynvim there.
+
 ## Notes
 
 ### Rust
