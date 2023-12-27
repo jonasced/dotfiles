@@ -14,6 +14,9 @@ map("t", "<C-q>", "<C-\\><C-n>", { desc = "Escape terminal" })
 -- Create new empty buffer
 map("n", "<leader>fn", "<cmd>enew<CR>", opts)
 
+-- Quick naviation to upper directory, nice for telescope
+map("n", "<leader>.", "<cmd>cd ..<CR>", { desc = "Runs cd .. and changes directory" })
+
 -- Better tabbing
 map("v", "<", "<gv", { desc = "Unindent line", silent = true })
 map("v", ">", ">gv", { desc = "Indent line", silent = true })
