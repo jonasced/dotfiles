@@ -19,7 +19,7 @@ function M.config()
             {
               "mode",
               fmt = function(str)
-                return str:sub(1, 1)
+                return str:sub(1, 30)
               end,
             },
           },
