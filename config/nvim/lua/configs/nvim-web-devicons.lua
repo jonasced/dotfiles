@@ -7,7 +7,7 @@ function M.config()
     nvim_web_devicons.set_icon({
       deb = { icon = "", name = "Deb" },
       lock = { icon = "", name = "Lock" },
-      mp3 = { icon = "", name = "Mp3" },
+      mp3 = { icon = "󰝚", name = "Mp3" },
       mp4 = { icon = "", name = "Mp4" },
       out = { icon = "", name = "Out" },
       ["robots.txt"] = { icon = "ﮧ", name = "Robots" },
