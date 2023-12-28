@@ -58,6 +58,13 @@ with, while still having failed diagnostics elsewhere within the workspace.
 ### Neovim
 :help is your friend. :helpgrep "<pattern>" is also very useful.
 
+
+#### Formatting and linting
+This has been a whole tangent. Languange servers setup in mason-lspconfig can overlap with nvim-lint and formatter, making it hard to know who's doing what.
+##### Python
+For Python I recommend using only lsp or lint+formatter. Defining an intersection seems more work than its worth.
+The LSP does live hinting while the lint+formatter only does on save, so I opted for LSP.
+
 #### Windows
 Guide below, long story short: CTRL-W is the keyword, navigation is obvious.
 Split on S, vertical on V, close on Q.
