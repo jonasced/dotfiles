@@ -4,7 +4,7 @@ function M.config()
   local formatter_ok, formatter = pcall(require, "formatter")
   if formatter_ok then
     local prettier = require("formatter.defaults.prettier")
-    local python_formatters = require("formatter.filetypes.python")
+    local python_formatters = require("configs.python")
     formatter.setup({
       logging = false,
       log_level = vim.log.levels.OFF,
