@@ -18,8 +18,10 @@ function M.config()
     }
     lint.linters_by_ft = {
       -- However the mason extension seems not needed to be installed (except for mypy, ruff)
-      -- Removed flake8 as it is replaced by ruff. Ruff is customized in the ruff config folder
-      python = { "mypy", "pylint", "ruff" },
+      -- These are removed due to overlap with pyright from mason-lspconfig
+      -- "flake8", "mypy", "pylint",
+      -- Ruff is customized in the ruff config folder
+      python = { "ruff" },
       terraform = { "tflint" },
       sh = { "shellcheck" },
     }

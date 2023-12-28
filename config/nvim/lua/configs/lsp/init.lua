@@ -208,6 +208,7 @@ function M:server_settings(server)
   return opts
 end
 
+-- Connects the mason-lspconfig with the server config files in the server-settings folder
 function M.setup_server(server_name)
   local server = require("lspconfig")[server_name]
   local opts = M:server_settings(server)
