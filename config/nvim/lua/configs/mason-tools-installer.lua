@@ -14,10 +14,16 @@ function M.config()
         "rust_analyzer",
         "tsserver",
         "yaml-language-server",
-        -- Linters
-        "flake8",
-        -- formatters
-        "black",
+        -- Linters (customized in nvim-lint.lua)
+        -- "flake8",
+        "mypy",
+        "ruff",
+        "pylint",
+        -- formatters (customized in formatter.lua)
+        "autopep8",
+        "autoflake",
+        -- "reorder-python-imports",
+         "black",
         "isort",
         "stylua",
         -- Debuggers

@@ -27,8 +27,12 @@ function M.config()
           --     stdin = true,
           --   }
           -- end,
+          -- Dependencies on Mason installation does not pop up.
+          -- Can be configured in the configs.python.lua file!
           python_formatters.isort,
           python_formatters.black,
+          python_formatters.autopep8,
+          python_formatters.autoflake,
         },
         elixir = {
           require("formatter.filetypes.elixir").mixformat,

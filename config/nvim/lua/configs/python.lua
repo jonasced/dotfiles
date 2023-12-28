@@ -11,7 +11,7 @@ end
 function M.autopep8()
   return {
     exe = "autopep8",
-    args = { "-" },
+    args = { "-", "--line-length=120", },
     stdin = 1,
   }
 end
