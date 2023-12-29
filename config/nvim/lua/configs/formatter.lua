@@ -53,9 +53,10 @@ function M.config()
         yaml = {
           prettier,
         },
-        markdown = {
-          prettier,
-        },
+        -- Obsidian addon appears to interfere with fomratter...
+        -- markdown = {
+        --   prettier,
+        -- },
         -- Use the special "*" filetype for defining formatter configurations on any filetype
         ["*"] = {
           -- "formatter.filetypes.any" defines default configurations for any filetype
