@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -118,19 +119,22 @@ fi
 
 # JC ADDED: git branch colors https://gist.github.com/danielalvarenga/2df8cabbd6f3041c2378
 function parse_git_branch () {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.\{1,35\}\).*/(\1)/'
 }
- 
+
 RED="\[\033[01;31m\]"
 YELLOW="\[\033[01;33m\]"
 GREEN="\[\033[01;32m\]"
 BLUE="\[\033[01;34m\]"
 NO_COLOR="\[\033[00m\]"
 
-# without host
+# Tips: https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
+# without host \h only user \u
 # PS1="$GREEN\u$NO_COLOR:$BLUE\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
-# with host
-PS1="$GREEN\u@\h$NO_COLOR:$BLUE\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ " 
+# with full path \w
+# PS1="$GREEN\u@\h$NO_COLOR:$BLUE\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
+# minimalist approach
+PS1="$GREEN\h$NO_COLOR:$BLUE\W$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
 
 # hgrep https://askubuntu.com/questions/74631/how-do-i-search-my-command-line-history-for-commands-i-used-before
 #hgrep () {
