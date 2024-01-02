@@ -293,6 +293,10 @@ return {
       --     path = "~/vaults/work",
       --   },
       },
+      -- Remove standard name/ID on creation that adds zettlekasten format
+      note_id_func = function(title)
+        return title
+      end,
       follow_url_func = function(url)
         -- Open the URL in the default web browser.
         vim.fn.jobstart({"xdg-open", url})  -- linux
