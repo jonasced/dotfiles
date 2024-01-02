@@ -58,14 +58,22 @@ with, while still having failed diagnostics elsewhere within the workspace.
 ### Neovim
 :help is your friend. :helpgrep "<pattern>" is also very useful.
 
+#### Telescope
+<leader>-sk opens up keybindings! There are many neat ones followed by the leader, currently set to spacebar:
+ff, fg, e, o.
+
+:help telescope of course, there you can find more.
+
+live_grep_args
+find_files
 
 #### Formatting, linting and language servers
 This has been a whole tangent. Languange servers setup in mason-lspconfig can overlap with nvim-lint and formatter, making it hard to know who's doing what.
+
 ##### Python
 For Python I recommend using only lsp or lint+formatter. Defining an intersection seems more work than its worth.
 The LSP does live hinting while the lint+formatter only does on save, so I opted for LSP. It already had some plugins
 installed (for example flake8 which is also available as linter) so seems like the superior option.
-
 
 #### Windows
 Guide below, long story short: CTRL-W is the keyword, navigation is obvious.
@@ -76,20 +84,16 @@ For more -> :help window
 :Sexplore is neat for searching around in directories.
 :cd to move around (useful for changing telescope context)
 
-#### Telescope
-<leader>-sk opens up keybindings! There are many neat ones followed by the leader, currently set to spacebar:
-ff, fg, gt, gc, e, o.
+#### Gitsigns
+gt, gc, gd, gh... (use space-sk to find all)
 For smooth git usage, use hunks! Available in keybinding settings. Combine status, hunks and the :Git commit for smooth workflows
-
-:help telescope of course, there you can find more.
-
-live_grep_args
-find_files
 
 #### Bufferline
 The plugin that controls the buffers visible at the top of the window when you've jumped between files! Commands are available as :Bufferline...
 :help bufferline
 
-
 #### Jumps
 Jumps in neovim! Use CTRL-] to jump, CTRL-O for older and CTRL-I for newer in jump list. See jump list with :ju
+
+#### Line wrapping
+Remember, if you want to wrap lines use `:set wrap`, reset with `:set nowrap`
