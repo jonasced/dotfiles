@@ -58,6 +58,12 @@ with, while still having failed diagnostics elsewhere within the workspace.
 ### Neovim
 :help is your friend. :helpgrep "<pattern>" is also very useful.
 
+#### Inspecting code
+K opens documentation of variable/function/class etc.
+
+#### Jumps
+Jumps in neovim! Use CTRL-] to jump, CTRL-O for older and CTRL-I for newer in jump list. See jump list with :ju
+
 #### Telescope
 <leader>-sk opens up keybindings! There are many neat ones followed by the leader, currently set to spacebar:
 ff, fg, e, o.
@@ -91,9 +97,6 @@ For smooth git usage, use hunks! Available in keybinding settings. Combine statu
 #### Bufferline
 The plugin that controls the buffers visible at the top of the window when you've jumped between files! Commands are available as :Bufferline...
 :help bufferline
-
-#### Jumps
-Jumps in neovim! Use CTRL-] to jump, CTRL-O for older and CTRL-I for newer in jump list. See jump list with :ju
 
 #### Line wrapping
 Remember, if you want to wrap lines use `:set wrap`, reset with `:set nowrap`
