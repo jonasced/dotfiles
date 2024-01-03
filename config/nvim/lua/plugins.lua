@@ -95,6 +95,24 @@ return {
     "tpope/vim-fugitive",
   },
 
+  -- Git diff view
+  {
+    "sindrets/diffview.nvim",        -- optional - Diff integration
+  },
+--   -- More git! New commands etc, might be nice. Checkout at home.
+-- https://www.reddit.com/r/neovim/comments/14yjftv/massive_update_to_neogit_and_new_home/ <- for thoughts
+-- {
+--   "NeogitOrg/neogit",
+--   dependencies = {
+--     "nvim-lua/plenary.nvim",         -- required
+--     "sindrets/diffview.nvim",        -- optional - Diff integration
+--
+--     -- Only one of these is needed, not both.
+--     "nvim-telescope/telescope.nvim", -- optional
+--   },
+--   config = true
+-- },
+
   -- Tmux integration (navigation + resize)
   {
     "aserowy/tmux.nvim",
