@@ -4,7 +4,8 @@ return {
     pylsp = {
       plugins = {
         pycodestyle = {
-          ignore = {'W391'},
+          -- E203 conflicts with black https://github.com/psf/black/issues/315, ignore it.
+          ignore = {'W391', 'E203'},
           maxLineLength = 120
         },
       },
