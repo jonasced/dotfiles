@@ -3,12 +3,18 @@ local M = {}
 function M.config()
   local formatter_ok, formatter = pcall(require, "formatter")
   if formatter_ok then
-    local prettier = require("formatter.defaults.prettier")
+    -- Local configurable formatter
     -- local python_formatters = require("configs.python")
+    -- Using the standard settings
+    -- local python_formatters = require("formatter.filetypes.python")
+    local prettier = require("formatter.defaults.prettier")
     formatter.setup({
       logging = false,
       log_level = vim.log.levels.OFF,
       filetype = {
+        c = {
+         require("formatter.filetypes.c").clangformat,
+        },
         lua = {
           require("formatter.filetypes.lua").stylua,
         },
