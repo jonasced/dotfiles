@@ -64,6 +64,11 @@ K opens documentation of variable/function/class etc.
 #### Jumps
 Jumps in neovim! Use CTRL-] to jump, CTRL-O for older and CTRL-I for newer in jump list. See jump list with :ju
 
+#### Listing all X in file (func def, classes etc)
+`:help global`
+Find all lines that match keyword:
+`:g/<keyword>`
+
 #### Telescope
 <leader>-sk opens up keybindings! There are many neat ones followed by the leader, currently set to spacebar:
 ff, fg, e, o.
@@ -72,6 +77,14 @@ ff, fg, e, o.
 
 live_grep_args
 find_files
+
+##### Search and replace in several files
+You can also use telescope to help with search and replace in several files!
+0. Yank the text you want to replace.
+1. Telescope for `TEXT` you want to replace in the directory where it occurrs
+2. Ctrl+Q to bring up the quickfix list
+3. Run `:cdo %s/TEXT/NEWTEXT/gc` to replace
+You could do this on an entire folder strcuture but this process avoids attempting to replace the text in files where it does not exist, something that takes quite some time otherwise.
 
 #### Formatting, linting and language servers
 This has been a whole tangent. Languange servers setup in mason-lspconfig can overlap with nvim-lint and formatter, making it hard to know who's doing what.
