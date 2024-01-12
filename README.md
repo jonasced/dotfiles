@@ -39,6 +39,9 @@ rcup -v
 
 ## Notes
 
+### tmux
+Notify when process is done by prefix + m! (https://github.com/rickstaa/tmux-notify)
+
 ### Rust
 
 There are some behaviors of `rust-analyzer` and the way it interacts with Neovim that may make you think your
