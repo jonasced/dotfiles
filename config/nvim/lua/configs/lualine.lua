@@ -42,6 +42,23 @@ function M.config()
             },
           },
           lualine_c = {
+                  -- Display number of loaded buffers
+            {
+              function()
+                local is_loaded = vim.api.nvim_buf_is_loaded
+                local tbl = vim.api.nvim_list_bufs()
+                local loaded_bufs = 0
+                for i = 1, #tbl do
+                  if is_loaded(tbl[i]) then
+                    loaded_bufs = loaded_bufs + 1
+                  end
+                end
+                return loaded_bufs
+              end,
+              icon = "󰘳",
+              color = { fg = "DarkCyan", gui = "bold" },
+            },
+
             {
               "filename",
               shorting_target = 40,

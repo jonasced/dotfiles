@@ -30,6 +30,7 @@ map("n", "<b", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer tab left" })
 -- Bufdelete
 map("n", "<leader>c", "<cmd>Bdelete<CR>", { desc = "Close buffer" })
 map("n", "<leader>q", "<cmd>Bwipeout<CR>", { desc = "Delete buffer" })
+map("n", "<leader>bo", "<cmd>w|%bd|e#<cr>", {desc="Close all buffers but the current one"}) -- https://stackoverflow.com/a/42071865/516188
 
 -- NeoTree
 map("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Explorer" })

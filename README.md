@@ -61,6 +61,12 @@ with, while still having failed diagnostics elsewhere within the workspace.
 ### Neovim
 :help is your friend. :helpgrep "<pattern>" is also very useful.
 
+#### Closing all but the active buffer
+Magic!
+:w|%bd|e#
+How it works: first write current buffer's changes, then close all open buffers, then reopen the buffer I was currently on. In Vim, the | chains the execution of commands together. If your buffer is up to date the above can be shortened to :%bd | e#
+
+
 #### Inspecting code
 K opens documentation of variable/function/class etc.
 
