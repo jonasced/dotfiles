@@ -8,6 +8,11 @@ map("c", "w!!", "w !sudo tee > /dev/null %", { desc = "Sudo write" })
 -- Enter select mode from insert mode (useful for jumping between snippet nodes)
 map("i", "<M-g>", "<Esc>gh", { desc = "Insert mode --> select mode" })
 
+-- Add OSCYank for remote yanking
+map('n', '<leader>y', '<Plug>OSCYankOperator')
+map('n', '<leader>yy', '<leader>c_', {remap = true})
+map('v', '<leader>y', '<Plug>OSCYankVisual')
+
 -- Escape terminal emulator
 map("t", "<C-q>", "<C-\\><C-n>", { desc = "Escape terminal" })
 
