@@ -145,3 +145,6 @@ PS1="$GREEN\h$NO_COLOR:$BLUE\W$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
 alias hgrep='history | grep --color=auto '
 
 . "$HOME/.cargo/env"
+
+# Zoxide
+eval "$(zoxide init --cmd cd bash)"

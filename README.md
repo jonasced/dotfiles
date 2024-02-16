@@ -30,6 +30,7 @@ rcup -v
 - nodejs
 - ripgrep
 - fd-find
+- zoxide
 
 6. For some of the icons you need to setup NerdIcons. See github repository for that
 
