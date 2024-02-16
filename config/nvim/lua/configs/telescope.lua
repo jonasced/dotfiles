@@ -55,6 +55,15 @@ function M.config()
             n = multi_open_mappings,
           },
         },
+        git_branches = {
+          mappings = {
+            n = {
+            ["<C-d>"] = actions.preview_scrolling_down,
+            -- Unbound git delete branch, set if needed in the future
+            -- ["<C-X>"] = actions.git_delete_branch,
+            }
+          }
+        },
         find_files = {
           follow = true,
           mappings = {
