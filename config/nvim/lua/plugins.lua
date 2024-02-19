@@ -304,7 +304,7 @@ return {
       workspaces = {
         {
           name = "hjarnan",
-          path = "~/Dropbox/Apps/Obsidian/joplin_merge",
+          path = "~/Dropbox/Apps/Obsidian/Dharma",
         },
       --   {
       --     name = "work",
