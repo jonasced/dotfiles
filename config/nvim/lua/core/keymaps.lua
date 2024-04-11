@@ -2,6 +2,9 @@ local opts = { silent = true }
 local map = vim.keymap.set -- set new key mapping
 local cmd = vim.cmd -- execute vimscript commands
 
+-- Open files in Chrome
+map("n", "<leader>fx", '<cmd>!google-chrome "%"<cr>', { desc = "Open file in Chrome" })
+
 -- Allow to save files as sudo (even if Neovim started without sudo)
 map("c", "w!!", "w !sudo tee > /dev/null %", { desc = "Sudo write" })
 
