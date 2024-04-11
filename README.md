@@ -123,3 +123,56 @@ The plugin that controls the buffers visible at the top of the window when you'v
 
 #### Line wrapping
 Remember, if you want to wrap lines use `:set wrap`, reset with `:set nowrap`
+
+#### Git tips
+
+Find deleted file:
+git log --all --full-history -- "**/thefile.*"
+
+
+Specific parts of file blame/log
+git blame -L 15,25:path/to/file
+git log -L 15,25:path/to/file
+git log -L :Function:path/to/file
+
+Ignore whitespace, or copied in the same commit , or the commit that created the file, or any commit at all
+git blame -w -C -C -C
+
+Match regex of log only
+git log -S file_watcher -p
+
+What have you done?
+git reflog
+
+Line based diff default, word diff possible
+git diff --word-diff
+
+Avoid having to solve the same conflict twice
+git config --global rerere.enabled true
+
+
+git branch --column
+git config --global column.ui true
+branch.sort committerdate
+
+
+Checks if fetch is needed, if your ref is the last on the server. Safety so you don't accidentally force push over someone elses work
+git push --force-with-lease
+
+Sign commits with SSH? Needed?
+
+Runs cronjobs in the background every hour, speeeeed.
+git maintenance start
+
+git commit-graph write
+
+Faster git status
+core.fsmonitor true
+
+
+##### BIG repo stuff
+git clone --filter:blob:none
+git clone --filter:tree:0
+
+If you have a lot of subdirectories but only want to work on one:
+sparse-checkout
