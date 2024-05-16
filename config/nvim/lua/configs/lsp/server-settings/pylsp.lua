@@ -5,7 +5,7 @@ return {
       plugins = {
         pycodestyle = {
           -- E203 conflicts with black https://github.com/psf/black/issues/315, ignore it.
-          ignore = {'W391', 'E203'},
+          ignore = {'W391', 'E203', 'W503'},
           maxLineLength = 120
         },
       },
