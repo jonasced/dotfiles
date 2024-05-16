@@ -71,6 +71,15 @@ map(
   "<cmd>lua require('telescope.builtin').find_files({prompt_title='Dotfiles', cwd='$HOME/.dotfiles'})<CR>",
   { desc = "Search dotfiles" }
 )
+map(
+  "n",
+  "<leader>fc",
+  "<cmd>lua require('telescope.builtin').lsp_document_symbols({show_line=true})<CR>",
+  { desc = "Search symbols and show line" }
+)
+map("n", "{", "<cmd>AerialPrev<CR>", { desc = "" })
+map("n", "}", "<cmd>AerialNext<CR>", { desc = "" })
+map("n", "<leader>aa", "<cmd>AerialToggle!<CR>", { desc = "" })
 map("n", "<leader>rr", "<cmd>Telescope resume<CR>", { desc = "Resume the last picker" })
 map("n", "<leader>fg", "<cmd>Telescope live_grep_args<CR>", { desc = "Search grep" })
 map("n", "<leader>fw", "<cmd>Telescope grep_string<CR>", { desc = "Grep string under cursor" })
