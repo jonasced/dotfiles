@@ -23,7 +23,7 @@ git clone https://github.com/oshevtsov/dotfiles.git ~/.dotfiles
 rcup -v
 ```
 
-5. Make sure that all the necessary programs required by the dotfiles are installed
+5. Make sure that all the necessary programs required by the dotfiles are installed. Google them for respective installation.
 
 - tmux
 - neovim (run `:checkhealth` to see what is missing)
@@ -31,6 +31,7 @@ rcup -v
 - ripgrep
 - fd-find
 - zoxide
+- kanata
 
 6. For some of the icons you need to setup NerdIcons. See github repository for that
 
@@ -39,6 +40,13 @@ rcup -v
 8. For python usage, create a venv at the path specified by the python3_host_prog setting and install pynvim there.
 
 ## Notes
+
+### Kanata
+Added config for better nvim usage. Run in background:
+`sudo /home/jonas/.cargo/bin/kanata --cfg /home/jonas/.dotfiles/kanata/capslock_ctrlescape_vimkeys.kbd`
+TODO: Add as systemd service if this works nicely.
+- https://github.com/jtroo/kanata/wiki/Avoid-using-sudo-on-Linux
+- https://github.com/jtroo/kanata/discussions/130
 
 ### tmux
 Notify when process is done by prefix + m! (https://github.com/rickstaa/tmux-notify)
