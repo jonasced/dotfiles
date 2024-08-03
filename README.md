@@ -78,12 +78,18 @@ Magic!
 :w|%bd|e#
 How it works: first write current buffer's changes, then close all open buffers, then reopen the buffer I was currently on. In Vim, the | chains the execution of commands together. If your buffer is up to date the above can be shortened to :%bd | e#
 
+#### Going to lsp notes (error, warning, note etc)
+Bound to `[d`, and `]d`
+
+#### Code folding
+Search for opening and closing folds in help
+
 
 #### Inspecting code
-K opens documentation of variable/function/class etc.
+K (uppercase) opens documentation of variable/function/class etc.
 
 #### Jumps
-Jumps in neovim! Use CTRL-] to jump, CTRL-O for older and CTRL-I for newer in jump list. See jump list with :ju
+Jumps in neovim! Use CTRL-] to jump to definition, CTRL-O for older and CTRL-I for newer in jump list. See jump list with :ju
 
 #### Listing all X in file (func def, classes etc)
 `:help global`
