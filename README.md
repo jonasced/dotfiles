@@ -48,6 +48,9 @@ TODO: Add as systemd service if this works nicely.
 - https://github.com/jtroo/kanata/wiki/Avoid-using-sudo-on-Linux
 - https://github.com/jtroo/kanata/discussions/130
 
+I've also discovered that you can map arbitrary unicode characters as well! Added delta and swedish to the layer for arrows
+(Also, in linux you can type ctrl+shift+u and then the unicode in hex.)
+
 ### tmux
 Notify when process is done by prefix + m! (https://github.com/rickstaa/tmux-notify)
 
