@@ -27,24 +27,68 @@ configuration entries.
 )
 
 (defsrc
-  caps grv                        [
-       d     h    j    k    l    ;   '
-  lsft rsft
+  caps grv  1   2  3                [
+       d     h  j  k  l           ;  '
+  lsft                            rsft
+                            ralt
 )
 
 (deflayer default
-  @cap @grv                       _
-       _     _    _    _    _    _   _
-  _    _
+  @cap @grv   _  _  _       _
+       _     _  _  _  _   _  _
+  _                                 _
+                            @ralt
 )
 
 (deflayer arrows
-  _    _                          (unicode å)
-       (unicode Δ)    left down up rght    (unicode ö)   (unicode ä)
-  _    _
+  @cap  @grv       _  _  _                             (unicode å)
+       (unicode Δ)    left down up rght  (unicode ö)  (unicode ä)
+  _                                 _
+                              @ralt
+)
+
+(deflayer swedish
+  @cap  @grv    _  _  _                          (unicode å)
+       _          _  _  _  _  (unicode ö)  (unicode ä)
+  @lsft                                 @rsft
+                            @ralt
+)
+
+(deflayer swedishUpper
+  @cap  @grv    _  _  _                          (unicode Å)
+       _          _  _  _  _  (unicode Ö)  (unicode Ä)
+  @lsft                                 @rsft
+                            @ralt
+)
+
+(deflayer americanSymbols
+  @cap @grv   _  _  _       [
+       _     _  _  _  _   ;  '
+  _                                 _
+                            @ralt
+)
+
+(deflayer layers
+  _    _   @dea @swe @arr                _
+       _          _  _  _  _          _  _
+  _                                 _
+                            _
 )
 
 (defalias
+  ;; make caps-lock useful
   cap (tap-hold-press 200 200 esc lctl)
+
+  ;; arrows and extra character toggle
   grv (tap-hold-press 200 200 grv (layer-toggle arrows))
+
+  ;; layer switch for swedish/english letter toggle
+  ralt (tap-hold 200 200 ralt (layer-toggle layers))
+  swe (layer-switch swedish)
+  dea (layer-switch default)
+  arr (layer-switch arrows)
+  ;; fix capital letters
+  lsft (multi lsft (layer-toggle swedishUpper))
+  ;; toggle back to american for symbols on right shift, vim save etc
+  rsft (multi rsft (layer-toggle americanSymbols))
 )
