@@ -41,7 +41,7 @@ configuration entries.
 )
 
 (deflayer arrows
-  @cap  @grv       _  _  _                             (unicode å)
+  @cap  @grv       @dea  @swe  @arr                             (unicode å)
        (unicode Δ)    left down up rght  (unicode ö)  (unicode ä)
   _                                 _
                               @ralt
