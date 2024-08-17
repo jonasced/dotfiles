@@ -83,7 +83,6 @@ configuration entries.
   grv (tap-hold-press 200 200 grv (layer-toggle arrows))
 
   ;; layer switch for swedish/english letter toggle
-  ralt (tap-hold 200 200 ralt (layer-toggle layers))
   swe (layer-switch swedish)
   dea (layer-switch default)
   arr (layer-switch arrows)
@@ -91,4 +90,5 @@ configuration entries.
   lsft (multi lsft (layer-toggle swedishUpper))
   ;; toggle back to american for symbols on right shift, vim save etc
   rsft (multi rsft (layer-toggle americanSymbols))
+  ralt (tap-hold 200 200 ralt (layer-toggle americanSymbols))
 )
