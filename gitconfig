@@ -1,0 +1,11 @@
+[user]
+	email = jonas.cederberg@ferroamp.se
+	name = Jonas Cederberg
+[safe]
+	directory = *
+[core]
+	editor = vim
+[alias]
+	st = status
+  rb = rebase
+	rbc = rebase --continue
