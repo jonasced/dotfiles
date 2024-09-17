@@ -17,8 +17,8 @@ HISTCONTROL=erasedups
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=-1
+HISTFILESIZE=-1
 HISTTIMEFORMAT="%F %T "
 PROMPT_COMMAND="history -a"
 
