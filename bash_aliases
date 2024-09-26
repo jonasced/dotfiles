@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Kanata start alias
+alias dev='/home/jonas/.dotfiles/tmux_dev.sh'
+alias misc='/home/jonas/.dotfiles/tmux_misc.sh'
 alias kanatastart='sudo /home/jonas/.cargo/bin/kanata --cfg /home/jonas/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd'
 
 # Git aliases

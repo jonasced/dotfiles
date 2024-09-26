@@ -32,6 +32,10 @@ rcup -v
 - fd-find
 - zoxide
 - kanata
+- atuin (for a nice ctrl+r experience)
+- bash-git-prompt (for a nice git terminal line experience. fancygit is an alternative)
+- (porsmo for a nice timer)
+- (git-absorb for easy fixups)
 
 6. For some of the icons you need to setup NerdIcons. See github repository for that
 
@@ -43,8 +47,8 @@ rcup -v
 
 ### Kanata
 Added config for better nvim usage. Run in background:
-`sudo /home/jonas/.cargo/bin/kanata --cfg /home/jonas/.dotfiles/kanata/capslock_ctrlescape_vimkeys.kbd`
-TODO: Add as systemd service if this works nicely.
+`sudo /home/jonas/.cargo/bin/kanata --cfg /home/jonas/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd`
+TODO: Add as systemd service if this works nicely. Current workaround is to have a tmux alias for opening misc which calls this.
 - https://github.com/jtroo/kanata/wiki/Avoid-using-sudo-on-Linux
 - https://github.com/jtroo/kanata/discussions/130
 

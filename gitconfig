@@ -4,8 +4,18 @@
 [safe]
 	directory = *
 [core]
-	editor = vim
+	editor = nvim -f
 [alias]
 	st = status
   rb = rebase
 	rbc = rebase --continue
+[color]
+	ui = true
+[color "diff"]
+	meta = yellow
+	old = red
+	new = green
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan

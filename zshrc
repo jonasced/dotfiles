@@ -105,3 +105,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
