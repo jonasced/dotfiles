@@ -34,8 +34,8 @@ rcup -v
 - kanata
 - atuin (for a nice ctrl+r experience)
 - bash-git-prompt (for a nice git terminal line experience. fancygit is an alternative)
+- git-absorb (for nice quick fixups) (https://github.com/tummychow/git-absorb?tab=readme-ov-file)
 - (porsmo for a nice timer)
-- (git-absorb for easy fixups)
 
 6. For some of the icons you need to setup NerdIcons. See github repository for that
 
