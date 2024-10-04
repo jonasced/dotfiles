@@ -1,7 +1,10 @@
 #|
-This config changes Caps Lock to act as Escape on quick tap, but
-if held, it will act as Left Ctrl. It also changes the backtick/grave key to
-act as backtick/grave on quick tap, but change hjkl keys to arrow keys vi style on hold.
+This config is made for the US keyboard layout and changes:
+- Enable Swedish typing while keeping symbols on US keyboard locations
+- Caps Lock to act as Escape on quick tap, but if held, it will act as Left Ctrl.
+- Backtick/grave key to act as backtick/grave on quick tap,
+but change hjkl keys to arrow keys vi style on hold.
+- Some extra fun stuff
 
 This text between the two pipe+octothorpe sequences is a multi-line comment.
 |#
@@ -26,69 +29,73 @@ configuration entries.
   process-unmapped-keys yes
 )
 
+;; These are the keys that are affected by re-binding.
+;; (US-keyboard active assumed)
 (defsrc
-  caps grv  1   2  3                [
-       d     h  j  k  l           ;  '
-  lsft                            rsft
-                            ralt
+  caps grv        1   2  3                        [
+       d                      h   j   k  l        ;     '
+  lsft                                           rsft
+                                        ralt
+)
+
+;; Layer that enables switching between default, swedish and meta layer on 1,2,3
+;; Also has arrow keys mapped to hjkl, adds swedish letters and delta
+(deflayer meta
+ @cap  @grv     @dea  @swe  @met                        (unicode å)
+    (unicode Δ)                left down up rght  (unicode ö)  (unicode ä)
+  _                                               _
+                                        @ralt
 )
 
 (deflayer default
-  @cap @grv   _  _  _       _
-       _     _  _  _  _   _  _
-  _                                 _
-                            @ralt
-)
-
-(deflayer arrows
-  @cap  @grv       @dea  @swe  @arr                             (unicode å)
-       (unicode Δ)    left down up rght  (unicode ö)  (unicode ä)
-  _                                 _
-                              @ralt
+  @cap @grv   _  _  _                             _
+       _                      _  _  _  _        _  _
+  _                                              _
+                                       @ralt
 )
 
 (deflayer swedish
-  @cap  @grv    _  _  _                          (unicode å)
-       _          _  _  _  _  (unicode ö)  (unicode ä)
-  @lsft                                 @rsft
-                            @ralt
+  @cap  @grv    _  _  _                            (unicode å)
+       _                      _  _  _  _  (unicode ö)  (unicode ä)
+  @lsft                                         @rsft
+                                        @ralt
 )
 
 (deflayer swedishUpper
-  @cap  @grv    _  _  _                          (unicode Å)
-       _          _  _  _  _  (unicode Ö)  (unicode Ä)
-  @lsft                                 @rsft
-                            @ralt
+  @cap  @grv    _  _  _                            (unicode Å)
+       _                      _  _  _  _  (unicode Ö)  (unicode Ä)
+  @lsft                                         @rsft
+                                        @ralt
 )
 
 (deflayer americanSymbols
-  @cap @grv   _  _  _       [
-       _     _  _  _  _   ;  '
-  _                                 _
-                            @ralt
+  @cap @grv   _  _  _                             [
+       _                      _  _  _  _      ;     '
+  _                                           _
+                                        @ralt
 )
 
-(deflayer layers
-  _    _   @dea @swe @arr                _
-       _          _  _  _  _          _  _
-  _                                 _
-                            _
-)
 
 (defalias
-  ;; make caps-lock useful
+  ;; Toggles meta layer (layer switch, arrows and extra characters) on backtick hold
+  ;; Example: hold ` and press 1,2,3 for layer switch
+  grv (tap-hold-press 200 200 grv (layer-toggle meta))
+
+  ;; make caps-lock useful: tap for escape, hold for left ctrl
   cap (tap-hold-press 200 200 esc lctl)
 
-  ;; arrows and extra character toggle
-  grv (tap-hold-press 200 200 grv (layer-toggle arrows))
-
-  ;; layer switch for swedish/english letter toggle
-  swe (layer-switch swedish)
-  dea (layer-switch default)
-  arr (layer-switch arrows)
-  ;; fix capital letters
+  ;; in swedish layer: write swedish capital letters with left shift
   lsft (multi lsft (layer-toggle swedishUpper))
-  ;; toggle back to american for symbols on right shift, vim save etc
-  rsft (multi rsft (layer-toggle americanSymbols))
+
+  ;; in swedish layer: toggle back to american for symbols with right alt
   ralt (tap-hold 200 200 ralt (layer-toggle americanSymbols))
+
+  ;; in swedish layer: toggle back to american symbols + shift with right shift (: for vim save etc)
+  rsft (multi rsft (layer-toggle americanSymbols))
+
+  ;; layer switch macros for default (US keyboard) / swedish / meta used in meta layer
+  dea (layer-switch default)
+  swe (layer-switch swedish)
+  met (layer-switch meta)
+
 )
