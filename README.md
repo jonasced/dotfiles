@@ -34,6 +34,7 @@ rcup -v
 - kanata
 - atuin (for a nice ctrl+r experience)
 - bash-git-prompt (for a nice git terminal line experience. fancygit is an alternative)
+   - My fork works for this symlink in bash: git@github.com:jonasced/bash-git-prompt.git
 - git-absorb (for nice quick fixups) (https://github.com/tummychow/git-absorb?tab=readme-ov-file)
 - (porsmo for a nice timer)
 
@@ -189,6 +190,15 @@ git commit-graph write
 
 Faster git status
 core.fsmonitor true
+
+##### Remotes, authentications and forks
+
+When forking a repo you might use HTTPS. If you want to push to your own fork, then you have to
+1. Set to your remote instead of the original repo by adding `git remote add myrepo /path/to/remote`
+   (https://stackoverflow.com/a/25546211)
+2. Set the remote to use ssh instead of https by either entering a ssh remote directly or editing the .git/config file
+   (https://stackoverflow.com/a/10909299)
+3. As said in the first thread, `git push -u myrepo master` for pushing and setting it to default for future pushes
 
 
 ##### BIG repo stuff
