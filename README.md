@@ -17,32 +17,42 @@ git clone https://github.com/oshevtsov/dotfiles.git ~/.dotfiles
 
 3. Go to the cloned directory, `cd ~/.dotfiles`
 4. Run the following command to create the symlinks (the `-v` flag stand for "verbose" and is
-   optional)
+   optional). Run this command again after every new dotfile you want to track is added.
 
 ```
 rcup -v
 ```
 
-5. Make sure that all the necessary programs required by the dotfiles are installed. Google them for respective installation.
+5. Make sure that all the core programs required by the dotfiles are installed. Google them for respective installation.
 
 - tmux
 - neovim (run `:checkhealth` to see what is missing)
 - nodejs
 - ripgrep
 - fd-find
-- zoxide
-- kanata
+
+6. Install terminal dependencies that are required as well.
+- ohmyzsh for more terminal niceness
+- zoxide (for nice path auto-completes)
+- kanata (for re-binding keys, used in misc tmux setup command)
 - atuin (for a nice ctrl+r experience)
 - bash-git-prompt (for a nice git terminal line experience. fancygit is an alternative)
    - My fork works for this symlink in bash: git@github.com:jonasced/bash-git-prompt.git
-- git-absorb (for nice quick fixups) (https://github.com/tummychow/git-absorb?tab=readme-ov-file)
 - (porsmo for a nice timer)
 
-6. For some of the icons you need to setup NerdIcons. See github repository for that
+- pyenv for handling local python installations
 
-7. For clipboard usage in Neovim, install xsel or something of the sort.
+7. For some of the icons you need to setup NerdIcons. See github repository for that
 
-8. For python usage, create a venv at the path specified by the python3_host_prog setting and install pynvim there.
+8. For clipboard usage in Neovim, install xsel or something of the sort.
+
+9. For python usage, create a venv at the path specified by the python3_host_prog setting and install pynvim there.
+
+10. Other misc things I've installed which are useful but not dependencies
+- uv for installing system wide tools such as tox, ruff, mypy etc
+- pipx for similar purposes, poetry/pre-commit for example
+- git-absorb (for nice quick fixups) (https://github.com/tummychow/git-absorb?tab=readme-ov-file)
+
 
 ## Notes
 
