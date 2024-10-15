@@ -45,6 +45,7 @@ map("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Explorer" })
 map("n", "<leader>o", "<cmd>Neotree focus<CR>", { desc = "Focus Explorer" })
 
 -- Git Signs
+map("n", "<leader>gg", "<cmd>LazyGit<CR>", {desc = "Open lazygit"})
 map("n", "<leader>gj", "<cmd>Gitsigns next_hunk<CR>", { desc = "Next git hunk" })
 map("n", "<leader>gk", "<cmd>Gitsigns prev_hunk<CR>", { desc = "Previous git hunk" })
 map("n", "<leader>gl", "<cmd>Gitsigns blame_line<CR>", { desc = "View git blame" })

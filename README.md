@@ -36,6 +36,7 @@ rcup -v
 - zoxide (for nice path auto-completes)
 - kanata (for re-binding keys, used in misc tmux setup command)
 - atuin (for a nice ctrl+r experience)
+- lazygit (super nice neovim git handling. https://github.com/jesseduffield/lazygit?tab=readme-ov-file#ubuntu)
 - bash-git-prompt (for a nice git terminal line experience. fancygit is an alternative)
    - My fork works for this symlink in bash: git@github.com:jonasced/bash-git-prompt.git
 - (porsmo for a nice timer)

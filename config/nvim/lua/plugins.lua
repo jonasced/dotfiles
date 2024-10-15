@@ -181,13 +181,14 @@ return {
   },
 
   -- Smooth escaping
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertCharPre",
-    config = function()
-      require("configs.better-escape").config()
-    end,
-  },
+  -- Removed due to capslock -> escape changes. This used to do escape on jk or kj
+  -- {
+  --   "max397574/better-escape.nvim",
+  --   event = "InsertCharPre",
+  --   config = function()
+  --     require("configs.better-escape").config()
+  --   end,
+  -- },
 
   -- JSON schemas
   {
@@ -337,4 +338,19 @@ return {
        "nvim-tree/nvim-web-devicons"
     },
   },
+  {
+  "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+        "LazyGit",
+        "LazyGitConfig",
+        "LazyGitCurrentFile",
+        "LazyGitFilter",
+        "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+}
 }
