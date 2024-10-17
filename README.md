@@ -27,7 +27,7 @@ rcup -v
 
 - tmux
 - neovim (run `:checkhealth` to see what is missing)
-- nodejs
+- nodejs (use nvm!)
 - ripgrep
 - fd-find
 
@@ -218,3 +218,21 @@ git clone --filter:tree:0
 
 If you have a lot of subdirectories but only want to work on one:
 sparse-checkout
+
+##### Several users for github on the same computer
+This thread has some tips: https://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig
+Boils down to adding custom ssh hosts, such as:
+```
+# Default GitHub
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
+
+# Professional github alias
+Host github_certainli
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_certainli_ed25519
+```
+and then authenticating using git@github_certainli instead for those repos.
