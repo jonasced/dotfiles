@@ -1,6 +1,10 @@
 [user]
-	email = jonas.cederberg@ferroamp.se
+	email = jonas.cederberg@gmail.com
 	name = Jonas Cederberg
+[includeIf "gitdir:~/dev/certainli/"]
+    path = ~/dev/certainli/.gitconfig-certainli
+[includeIf "gitdir:~/dev/ferroamp/"]
+    path = ~/dev/ferroamp/.gitconfig-ferroamp
 [safe]
 	directory = *
 [core]
