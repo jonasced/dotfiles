@@ -352,5 +352,9 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-}
+  },
+  {
+    'Exafunction/codeium.vim',
+    event = 'BufEnter'
+  }
 }

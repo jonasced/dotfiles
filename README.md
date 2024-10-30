@@ -54,6 +54,7 @@ rcup -v
 - uv for installing system wide tools such as tox, ruff, mypy etc
 - pipx for similar purposes, poetry/pre-commit for example
 - git-absorb (for nice quick fixups) (https://github.com/tummychow/git-absorb?tab=readme-ov-file)
+- Codeium for Neovim (some AI has never hurt anyone)
 
 
 ## Notes
