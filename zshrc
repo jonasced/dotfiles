@@ -116,6 +116,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# nvim appimage
+export PATH="$PATH:/opt/nvim/"
+
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
 

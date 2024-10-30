@@ -27,6 +27,7 @@ rcup -v
 
 - tmux
 - neovim (run `:checkhealth` to see what is missing)
+  - install is easiest by placing the appimage at the path /opt/nvim/nvim
 - nodejs (use nvm!)
 - ripgrep
 - fd-find

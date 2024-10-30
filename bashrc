@@ -117,6 +117,9 @@ PS1="$GREEN\h$NO_COLOR:$BLUE\W$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
 
 . "$HOME/.cargo/env"
 
+# nvim appimage
+export PATH="$PATH:/opt/nvim/"
+
 # Zoxide
 eval "$(zoxide init --cmd cd bash)"
 
