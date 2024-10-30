@@ -1,6 +1,6 @@
 #!/bin/bash
 # Misc setup
-tmux new-session -s isc -n dharma nvim /home/jonas/Dropbox/Apps/Obsidian/Dharma/ \; \
+tmux new-session -s misc -n dharma nvim /home/jonas/Dropbox/Apps/Obsidian/Dharma/ \; \
   split-window -v -p 10 \; \
   select-pane -t 1 \; \
   send-keys 'porsmo' C-m \; \

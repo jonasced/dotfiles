@@ -1,5 +1,5 @@
 #!/bin/bash
-# Dev setup
+# ferroamp setup
 source /home/jonas/dev/ferroamp/ehubapps/.venv/bin/activate || echo "failed to source env"
 tmux new-session -s dev -n ehubapps -c /home/jonas/dev/ferroamp/ nvim /home/jonas/dev/ferroamp/ehubapps/ \; \
   new-window -n ferroamp-os nvim /home/jonas/dev/ferroamp/ferroamp-os/ \; \
