@@ -1,7 +1,15 @@
 #!/bin/bash
 # ferroamp setup
+TMUX_ENV=ferroamp
+# Check if session is already active
+if tmux list-sessions | grep $TMUX_ENV; then
+  echo "Attaching to previous session"
+  tmux attach -t$TMUX_ENV
+  exit
+fi
+
 source /home/jonas/dev/ferroamp/ehubapps/.venv/bin/activate || echo "failed to source env"
-tmux new-session -s dev -n ehubapps -c /home/jonas/dev/ferroamp/ nvim /home/jonas/dev/ferroamp/ehubapps/ \; \
+tmux new-session -s $TMUX_ENV -n ehubapps -c /home/jonas/dev/ferroamp/ nvim /home/jonas/dev/ferroamp/ehubapps/ \; \
   new-window -n ferroamp-os nvim /home/jonas/dev/ferroamp/ferroamp-os/ \; \
   new-window -n meta-ferroamp nvim /home/jonas/dev/ferroamp/meta-ferroamp/ \; \
   new-window -n ferro-schemas nvim /home/jonas/dev/ferroamp/ferro-schemas/ \; \
