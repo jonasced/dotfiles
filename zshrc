@@ -146,3 +146,7 @@ export NVM_DIR="$HOME/.nvm"
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh --disable-up-arrow)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+eval "$(starship init zsh)"
