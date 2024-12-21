@@ -55,6 +55,7 @@ rcup -v
 - pipx for similar purposes, poetry/pre-commit for example
 - git-absorb (for nice quick fixups) (https://github.com/tummychow/git-absorb?tab=readme-ov-file)
 - Codeium for Neovim (some AI has never hurt anyone)
+- starship for a nice terminal prompt (https://starship.rs/guide/)
 
 
 ## Notes
