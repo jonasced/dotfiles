@@ -32,7 +32,7 @@ configuration entries.
 ;; These are the keys that are affected by re-binding.
 ;; (US-keyboard active assumed)
 (defsrc
-  caps grv        1   2  3                        [
+  caps grv        1   2  3       u   i            [
        d                      h   j   k  l        ;     '
   lsft                                           rsft
                                         ralt
@@ -40,36 +40,37 @@ configuration entries.
 
 ;; Layer that enables switching between default, swedish and meta layer on 1,2,3
 ;; Also has arrow keys mapped to hjkl, adds swedish letters and delta
+;; Also has pgdn, pgup mapped to ui for easier terminal scrolling
 (deflayer meta
- @cap  @grv     @dea  @swe  @met                        (unicode å)
+ @cap  @grv     @dea  @swe  @met    pgdn pgup          (unicode å)
     (unicode Δ)                left down up rght  (unicode ö)  (unicode ä)
   _                                               _
                                         @ralt
 )
 
 (deflayer default
-  @cap @grv   _  _  _                             _
+  @cap @grv   _  _  _          _  _               _
        _                      _  _  _  _        _  _
   _                                              _
                                        @ralt
 )
 
 (deflayer swedish
-  @cap  @grv    _  _  _                            (unicode å)
+  @cap  @grv    _  _  _        _  _              (unicode å)
        _                      _  _  _  _  (unicode ö)  (unicode ä)
   @lsft                                         @rsft
                                         @ralt
 )
 
 (deflayer swedishUpper
-  @cap  @grv    _  _  _                            (unicode Å)
+  @cap  @grv    _  _  _        _  _                (unicode Å)
        _                      _  _  _  _  (unicode Ö)  (unicode Ä)
   @lsft                                         @rsft
                                         @ralt
 )
 
 (deflayer americanSymbols
-  @cap @grv   _  _  _                             [
+  @cap @grv   _  _  _          _  _               [
        _                      _  _  _  _      ;     '
   _                                           _
                                         @ralt
