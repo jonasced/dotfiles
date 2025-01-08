@@ -56,6 +56,14 @@ rcup -v
 - git-absorb (for nice quick fixups) (https://github.com/tummychow/git-absorb?tab=readme-ov-file)
 - Codeium for Neovim (some AI has never hurt anyone)
 - starship for a nice terminal prompt (https://starship.rs/guide/)
+- ghostty for a experminetal terminal emulator (set gtk-titlebar = false to not have the ugly titlebar)
+  - Setup by following https://askubuntu.com/questions/578293/is-it-possible-to-remove-the-default-terminal-and-replace-it-with-some-other-ter
+  - Essentially mapping the terminal emulator of choice to the /home/jonas/bin/ folder with the name gnome-terminal (the default one)
+  - to overwrite it.
+  - BUG: this does not work! it seems like ghostty runs differently than gnome-terminal, it stays open in the window it is called from
+  - BUG: also it appears to not shut down properly: blank window is left after ctrl+d, so quitting is neccessary
+  - BUG: randomly shut down all my ghostty terminals when quitting one
+  - FEATURE: nicer red under faulty code in neovim when opened in ghostty than gnome
 
 
 ## Notes
