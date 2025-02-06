@@ -8,7 +8,7 @@ if tmux list-sessions | grep $TMUX_ENV; then
   exit
 fi
 
-source /home/jonas/dev/ferroamp/ehubapps/.venv/bin/activate || echo "failed to source env"
+source /home/jonas/dev/ferroamp/ehubapps/poetry-lock-ehub2/.venv/bin/activate || echo "failed to source env"
 tmux new-session -s $TMUX_ENV -n ehubapps -c /home/jonas/dev/ferroamp/ nvim /home/jonas/dev/ferroamp/ehubapps/ \; \
   new-window -n ferroamp-os nvim /home/jonas/dev/ferroamp/ferroamp-os/ \; \
   new-window -n meta-ferroamp nvim /home/jonas/dev/ferroamp/meta-ferroamp/ \; \
