@@ -9,8 +9,11 @@ if tmux list-sessions | grep $TMUX_ENV; then
   exit
 fi
 
-
-source /home/jonas/dev/certainli/certainli-pyapi/.venv/bin/activate || echo "failed to source env"
-tmux new-session -s $TMUX_ENV -n backend -c /home/jonas/dev/certainli/ nvim /home/jonas/dev/certainli/certainli-backend/ \; \
-  new-window -n frontend nvim /home/jonas/dev/certainli/certainli-frontend/ \; \
-  new-window -n pyapi nvim /home/jonas/dev/certainli/certainli-pyapi/ \; \
+tmux new-session -s $TMUX_ENV -n backend -c /home/jonas/dev/certainli/ \; \
+  send-keys 'cd certainli-backend' C-m \; \
+  send-keys 'nvim .' C-m \; \
+  new-window -n frontend -c /home/jonas/dev/certainli/certainli-frontend/ \; \
+  send-keys 'nvim .' C-m \; \
+  new-window -n pyapi -c /home/jonas/dev/certainli/certainli-pyapi/ \; \
+  send-keys 'eval "$( poetry env activate )"' C-m \; \
+  send-keys 'nvim .' C-m \; \
