@@ -127,6 +127,13 @@ return {
     config = function()
       require("configs.gitsigns").config()
     end,
+    on_attach = function(bufnr)
+    if vim.api.nvim_buf_get_name(bufnr):match('%.ipynb$') then
+      -- Do not attach for .ipynb file, since these are converted
+      -- with jupytext.nvim
+      return false
+    end
+  end,
   },
 
   -- Terminal integration
@@ -375,6 +382,66 @@ return {
             -- do some buffer keymap
         end,
     },
+  },
+  -- { -- Turns jupyter notebooks into md files! Super neat, but no lsp
+  --     'goerz/jupytext.nvim',
+  --     version = '0.2.0',
+  --     opts = {
+  --       -- default settings
+  --       jupytext = '/home/jonas/dev/envs/neovim/bin/jupytext',
+  --   },  -- see Options
+
+  { -- directly open ipynb files as quarto docuements
+    -- and convert back behind the scenes
+    'GCBallesteros/jupytext.nvim',
+    config = true,
+    -- opts = {
+    --   custom_language_formatting = {
+    --     python = {
+    --       extension = 'qmd',
+    --       style = 'quarto',
+    --       force_ft = 'quarto',
+    --     },
+    --     r = {
+    --       extension = 'qmd',
+    --       style = 'quarto',
+    --       force_ft = 'quarto',
+    --     },
+    --   },
+    -- },
+  },
+  { -- Quarto is supposed to help with LSP in jupyter notebooks converted to MD by jupytext
+    "quarto-dev/quarto-nvim",
+    dependencies = {
+      "jmbuhr/otter.nvim",
+      "nvim-treesitter/nvim-treesitter",
+
+  },
+    config = function()
+      require("quarto").setup{
+        debug = false,
+        closePreviewOnExit = true,
+        lspFeatures = {
+          enabled = true,
+          chunks = "curly",
+          languages = { "r", "python", "julia", "bash", "html" },
+          diagnostics = {
+            enabled = true,
+            triggers = { "BufWritePost" },
+          },
+          completion = {
+            enabled = true,
+          },
+        },
+        codeRunner = {
+          enabled = true,
+          default_method = "slime", -- "molten", "slime", "iron" or <function>
+          ft_runners = {}, -- filetype to runner, ie. `{ python = "molten" }`.
+          -- Takes precedence over `default_method`
+          never_run = { 'yaml' }, -- filetypes which are never sent to a code runner
+        },
+      }
+    end
   },
   {
       "benlubas/molten-nvim",
