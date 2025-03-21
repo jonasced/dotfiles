@@ -106,6 +106,12 @@ map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "
 cmd(":command -nargs=+ Rg :lua require('telescope.builtin').grep_string({search = <q-args>})<CR>")
 
 -- Builtin LSP
+map(
+    "n",
+    "<leader>ee",
+    function() vim.diagnostic.open_float({ focusable = true }) end,
+    { desc = "Expand an Error into a float for copying" }
+)
 map("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "LSP information" })
 map("n", "<leader>lI", "<cmd>Mason<CR>", { desc = "LSP installer" })
 
