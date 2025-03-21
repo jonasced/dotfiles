@@ -6,6 +6,13 @@ alias certainli='/home/jonas/.dotfiles/tmux_certainli.sh'
 alias misc='/home/jonas/.dotfiles/tmux_misc.sh'
 alias kanatastart='sudo /home/jonas/.cargo/bin/kanata --cfg /home/jonas/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd'
 
+# Jira aliases
+alias mywork='jira issue ls -s~Cancelled -s~Done -s~Backlog -a$(jira me) --order-by updated'
+alias mytodo='jira issue ls -s"To Do" -a$(jira me) --order-by priority'
+alias mybacklog='jira issue ls -sBacklog -a$(jira me) --order-by priority'
+alias epics='jira epic ls --order-by priority -s~Cancelled -s~Done'
+
+
 # Git aliases
 alias gst='git status'
 alias gl='git pull'
