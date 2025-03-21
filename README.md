@@ -51,6 +51,14 @@ rcup -v
 9. For python usage, create a venv at the path specified by the python3_host_prog setting and install pynvim there.
 
 10. Other misc things I've installed which are useful but not dependencies
+- delta for git syntax highlights (used in gitconfig) https://github.com/dandavison/delta
+  - Needs following config in .config/lazygit/config.yml:
+  ```
+  paging:
+    colorArg: always
+    pager: "delta --dark --paging=never --line-numbers"
+    useConfig: false
+  ```
 - uv for installing system wide tools such as tox, ruff, mypy etc
 - pipx for similar purposes, poetry/pre-commit for example
 - git-absorb (for nice quick fixups) (https://github.com/tummychow/git-absorb?tab=readme-ov-file)
