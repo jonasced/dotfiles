@@ -1,0 +1,40 @@
+#!/bin/bash
+# Input: Jira issue key as argument
+
+# Function to convert a string to kebab-case
+to_kebab_case() {
+    local input="$1"
+    # Remove leading/trailing whitespace
+    input=$(echo "$input" | xargs)
+
+    # Convert to lowercase, replace spaces and non-alphanumeric chars with hyphens
+    echo "$input" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/-\+/-/g' | sed 's/^-|-$//g'
+}
+
+# Parse Jira issue details
+parse_jira_issue() {
+    local input="$1"
+
+    # Extract issue key
+    local issue_key=$(echo "$input" | grep -oP 'ANS-\d+' | head -n 1)
+
+    # Extract issue title (look for line starting with #, trim whitespace)
+    local issue_title=$(echo "$input" | sed -n 's/^[[:space:]]*# \(.*\)$/\1/p' | head -n 1 | xargs)
+
+    # Convert title to kebab-case
+    local kebab_title=$(to_kebab_case "$issue_title")
+
+    # Generate branch name
+    local branch_name
+    if [ -n "$kebab_title" ]; then
+        branch_name="${issue_key}-${kebab_title}"
+    else
+        branch_name="${issue_key}"
+    fi
+
+    # Output git checkout command
+    git checkout -b "$branch_name"
+}
+
+# Read input and parse
+parse_jira_issue "$(jira issue view --plain $1)"
