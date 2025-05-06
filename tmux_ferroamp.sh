@@ -19,6 +19,7 @@ tmux new-session -s $TMUX_ENV -n ehubapps -c /home/jonas/dev/ferroamp/ \; \
   send-keys 'eval "$( poetry env activate )"' C-m \; \
   send-keys 'nvim .' C-m \; \
   new-window -n eegw -c /home/jonas/dev/ferroamp/ehub-ecloud-gateway/ \; \
+  send-keys 'eval "$( poetry env activate )"' C-m \; \
   send-keys 'nvim .' C-m \; \
   new-window -n ferro-schemas -c /home/jonas/dev/ferroamp/ferro-schemas/ \; \
   send-keys 'nvim .' C-m \; \
