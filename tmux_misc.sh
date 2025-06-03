@@ -14,7 +14,7 @@ tmux new-session -s $TMUX_ENV -n dharma -c /home/jonas/Dropbox/Apps/Obsidian/Dha
   split-window -v -p 10 \; \
   select-pane -t 1 \; \
   send-keys 'porsmo' C-m \; \
-  new-window -n dotfiles -c /home/jonas/.dotfiles/ \; \
+  new-window -n dotfiles -t 8 -c /home/jonas/.dotfiles/ \; \
   send-keys 'nvim .' C-m \; \
-  new-window -n kanata \; \
+  new-window -n kanata -t 9 \; \
   send-keys 'sudo /home/jonas/.cargo/bin/kanata --cfg /home/jonas/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd' C-m \; \
