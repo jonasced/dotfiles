@@ -360,10 +360,22 @@ return {
         "nvim-lua/plenary.nvim",
     },
   },
-  {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter'
-  },
+  -- {
+  --     "Exafunction/windsurf.nvim",
+  --     dependencies = {
+  --         "nvim-lua/plenary.nvim",
+  --         "hrsh7th/nvim-cmp",
+  --     },
+  --     config = function()
+  --         require("codeium").setup({
+  --         })
+  --     end
+  -- },
+  -- Replaced by windsurf!
+  -- {
+  --   'Exafunction/codeium.vim',
+  --   event = 'BufEnter'
+  -- },
   -- jupyter integration
   {
     "SUSTech-data/neopyter",
