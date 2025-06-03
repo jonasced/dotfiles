@@ -2,6 +2,83 @@ local opts = { silent = true }
 local map = vim.keymap.set -- set new key mapping
 local cmd = vim.cmd -- execute vimscript commands
 
+-- Quarto preview
+-- local quarto = require('quarto')
+-- quarto.setup()
+-- map('n', '<leader>qp', quarto.quartoPreview, { silent = true, noremap = true })
+
+-- Jira
+-- https://github.com/kid-icarus/jira.nvim did not work - looks like it used the HTTP api which I've not gotten to work
+-- map('n', '<leader>jv', '<cmd>Jira issue view<cr>', {})
+-- map('n', '<leader>jc', '<cmd>Jira issue create<cr>', {})
+-- map('n', '<leader>jt', require("jira.pickers.telescope").transitions, {}) -- Telescope
+-- map('n', '<leader>jt', require("jira.pickers.snacks").transitions, {}) -- Snacks
+
+
+-- Lazygit opening files in neovim! https://github.com/kdheepak/lazygit.nvim/issues/22
+-- local Util = require("lazyvim.util")
+--
+-- -- Function to check clipboard with retries
+-- local function getRelativeFilepath(retries, delay)
+--   local relative_filepath
+--   for i = 1, retries do
+--     relative_filepath = vim.fn.getreg("+")
+--     if relative_filepath ~= "" then
+--       return relative_filepath -- Return filepath if clipboard is not empty
+--     end
+--     vim.loop.sleep(delay) -- Wait before retrying
+--   end
+--   return nil -- Return nil if clipboard is still empty after retries
+-- end
+--
+-- -- Function to handle editing from Lazygit
+-- function LazygitEdit(original_buffer)
+--   local current_bufnr = vim.fn.bufnr("%")
+--   local channel_id = vim.fn.getbufvar(current_bufnr, "terminal_job_id")
+--
+--   if not channel_id then
+--     vim.notify("No terminal job ID found.", vim.log.levels.ERROR)
+--     return
+--   end
+--
+--   vim.fn.chansend(channel_id, "\15") -- \15 is <c-o>
+--   vim.cmd("close") -- Close Lazygit
+--
+--   local relative_filepath = getRelativeFilepath(5, 50)
+--   if not relative_filepath then
+--     vim.notify("Clipboard is empty or invalid.", vim.log.levels.ERROR)
+--     return
+--   end
+--
+--   local winid = vim.fn.bufwinid(original_buffer)
+--
+--   if winid == -1 then
+--     vim.notify("Could not find the original window.", vim.log.levels.ERROR)
+--     return
+--   end
+--
+--   vim.fn.win_gotoid(winid)
+--   vim.cmd("e " .. relative_filepath)
+-- end
+--
+-- -- Function to start Lazygit in a floating terminal
+-- function StartLazygit()
+--   local current_buffer = vim.api.nvim_get_current_buf()
+--   local float_term = Util.terminal.open({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false })
+--
+--   vim.api.nvim_buf_set_keymap(
+--     float_term.buf,
+--     "t",
+--     "<c-e>",
+--     string.format([[<Cmd>lua LazygitEdit(%d)<CR>]], current_buffer),
+--     { noremap = true, silent = true }
+--   )
+-- end
+--
+-- map("n", "<leader>gg", [[<Cmd>lua StartLazygit()<CR>]], { noremap = true, silent = true })
+-- Old lazygit simple
+map("n", "<leader>gg", "<cmd>LazyGit<CR>", {desc = "Open lazygit"})
+
 -- Open files in Chrome
 map("n", "<leader>fx", '<cmd>!google-chrome "%"<cr>', { desc = "Open file in Chrome" })
 
@@ -45,7 +122,6 @@ map("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Explorer" })
 map("n", "<leader>o", "<cmd>Neotree focus<CR>", { desc = "Focus Explorer" })
 
 -- Git Signs
-map("n", "<leader>gg", "<cmd>LazyGit<CR>", {desc = "Open lazygit"})
 map("n", "<leader>gj", "<cmd>Gitsigns next_hunk<CR>", { desc = "Next git hunk" })
 map("n", "<leader>gk", "<cmd>Gitsigns prev_hunk<CR>", { desc = "Previous git hunk" })
 map("n", "<leader>gl", "<cmd>Gitsigns blame_line<CR>", { desc = "View git blame" })
@@ -110,7 +186,7 @@ map(
     "n",
     "<leader>ee",
     function() vim.diagnostic.open_float({ focusable = true }) end,
-    { desc = "Expand an Error into a float for copying" }
+    { desc = "Expand an LSP Error / diagnostic into a float for copying" }
 )
 map("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "LSP information" })
 map("n", "<leader>lI", "<cmd>Mason<CR>", { desc = "LSP installer" })
