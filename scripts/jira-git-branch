@@ -11,12 +11,25 @@ to_kebab_case() {
     echo "$input" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/-\+/-/g' | sed 's/^-|-$//g'
 }
 
+# Check each string in the array
+
 # Parse Jira issue details
 parse_jira_issue() {
     local input="$1"
 
-    # Extract issue key
-    local issue_key=$(echo "$input" | grep -oP 'ANS-\d+' | head -n 1)
+    if echo "$input" | grep -qoP 'AI-\d+' ; then
+        # Extract issue key for AI
+        local issue_key=$(echo "$input" | grep -oP 'AI-\d+' | head -n 1)
+    fi
+    if echo "$input" | grep -qoP 'ANS-\d+' ; then
+        # Extract issue key for ANS
+        local issue_key=$(echo "$input" | grep -oP 'ANS-\d+' | head -n 1)
+    fi
+
+    if [[ -z $issue_key ]]; then
+        echo "No issue key found!"
+        exit 1
+    fi
 
     # Extract issue title (look for line starting with #, trim whitespace)
     local issue_title=$(echo "$input" | sed -n 's/^[[:space:]]*# \(.*\)$/\1/p' | head -n 1 | xargs)
