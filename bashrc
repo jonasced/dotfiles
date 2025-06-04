@@ -148,6 +148,8 @@ eval "$(pyenv init -)"
 
 eval "$(pyenv virtualenv-init -)"
 
+eval "$(starship init bash)"
+
 
 # NOTE: Atuin should be started LAST: https://github.com/atuinsh/atuin/issues/380
 . "$HOME/.atuin/bin/env"
