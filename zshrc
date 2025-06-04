@@ -134,6 +134,13 @@ export PATH="$PATH:/opt/nvim/"
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Load pyenv automatically by appending
 # the following to
 # ~/.bash_profile if it exists, otherwise ~/.profile (for login shells)
@@ -150,15 +157,9 @@ eval "$(pyenv init -)"
 
 eval "$(pyenv virtualenv-init -)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(starship init zsh)"
 
 # Atuin should always be loaded last
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh --disable-up-arrow)"
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-eval "$(starship init zsh)"
