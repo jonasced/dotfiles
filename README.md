@@ -73,6 +73,8 @@ rcup -v
   - BUG: also it appears to not shut down properly: blank window is left after ctrl+d, so quitting is neccessary
   - BUG: randomly shut down all my ghostty terminals when quitting one
   - FEATURE: nicer red under faulty code in neovim when opened in ghostty than gnome
+  - Config needed to hide title bar
+      window-decoration = "none"
 
 
 ## Notes
@@ -148,6 +150,13 @@ You can also use telescope to help with search and replace in several files!
 2. Ctrl+Q to bring up the quickfix list
 3. Run `:cdo %s/TEXT/NEWTEXT/gc` to replace
 You could do this on an entire folder strcuture but this process avoids attempting to replace the text in files where it does not exist, something that takes quite some time otherwise.
+
+Searching for a multi-line pattern can be done as follows, \_.* allows matching across multiple lines \v enables very magic mode for easier regex:
+```
+:%s/\v(start_pattern\_.*end_pattern)/replacement/g
+```
+
+
 
 #### Formatting, linting and language servers
 This has been a whole tangent. Languange servers setup in mason-lspconfig can overlap with nvim-lint and formatter, making it hard to know who's doing what.
