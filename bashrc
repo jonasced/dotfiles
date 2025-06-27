@@ -156,3 +156,6 @@ eval "$(starship init bash)"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash --disable-up-arrow)"
+
+# Created by `pipx` on 2025-06-04 09:27:25
+export PATH="$PATH:/home/jonas/.local/bin"
