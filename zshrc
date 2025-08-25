@@ -130,7 +130,9 @@ fi
 
 # nvim appimage
 export PATH="$PATH:/opt/nvim/"
-
+# nvim pre-build archive
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+ 
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
