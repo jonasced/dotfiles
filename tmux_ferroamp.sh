@@ -27,8 +27,9 @@ tmux new-session -s $TMUX_ENV -n ehubapps -c /home/jonas/dev/ferroamp/ \; \
   send-keys 'nvim .' C-m \; \
   new-window -n cont-deploy -c /home/jonas/dev/ferroamp/ferroamp-os-continuous-deploy/ \; \
   send-keys 'nvim .' C-m \; \
+  new-window -n artifacts -c /home/jonas/dev/ferroamp/artifacts/ \; \
+  send-keys 'pyenv activate install-patch' C-m \; \
 
 # new-window -n meta-ferroamp -c /home/jonas/dev/ferroamp/meta-ferroamp/ \; \
 # send-keys 'nvim .' C-m \; \
-# new-window -n artifacts -c /home/jonas/dev/ferroamp/artifacts/ \; \
 # send-keys 'nvim .' C-m \; \
