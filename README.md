@@ -186,7 +186,10 @@ The plugin that controls the buffers visible at the top of the window when you'v
 #### Line wrapping
 Remember, if you want to wrap lines use `:set wrap`, reset with `:set nowrap`
 
-#### Git tips
+#### Formatting json
+Magic `:%!jq '.'` from https://codegoalie.com/posts/format-json-nvim-jq/, discussed here: https://www.reddit.com/r/neovim/comments/xa4ca6/best_way_to_validate_and_format_json_files/
+
+### Git tips
 
 Find deleted file:
 git log --all --full-history -- "**/thefile.*"
