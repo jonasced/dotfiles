@@ -79,6 +79,14 @@ local cmd = vim.cmd -- execute vimscript commands
 -- Old lazygit simple
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", {desc = "Open lazygit"})
 
+-- CodeCompanion
+map({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+map({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+cmd([[cab cc CodeCompanion]])
+
 -- Open files in Chrome
 map("n", "<leader>fx", '<cmd>!google-chrome "%"<cr>', { desc = "Open file in Chrome" })
 
