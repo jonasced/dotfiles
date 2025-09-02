@@ -160,6 +160,17 @@ return {
     end,
   },
 
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    opts = {
+      preview = {
+        filetypes = { "codecompanion" },
+        ignore_buftypes = {},
+      },
+    },
+  },
+
   -- Syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
@@ -377,24 +388,24 @@ return {
   --   event = 'BufEnter'
   -- },
   -- jupyter integration
-  {
-    "SUSTech-data/neopyter",
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter', -- neopyter don't depend on `nvim-treesitter`, but does depend on treesitter parser of python
-      'AbaoFromCUG/websocket.nvim',  -- for mode='direct'
-    },
-
-    ---@type neopyter.Option
-    opts = {
-        mode="direct",
-        remote_address = "127.0.0.1:9001",
-        file_pattern = { "*.ju.*" },
-        on_attach = function(bufnr)
-            -- do some buffer keymap
-        end,
-    },
-  },
+  -- {
+  --   "SUSTech-data/neopyter",
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-treesitter/nvim-treesitter', -- neopyter don't depend on `nvim-treesitter`, but does depend on treesitter parser of python
+  --     'AbaoFromCUG/websocket.nvim',  -- for mode='direct'
+  --   },
+  --
+  --   ---@type neopyter.Option
+  --   opts = {
+  --       mode="direct",
+  --       remote_address = "127.0.0.1:9001",
+  --       file_pattern = { "*.ju.*" },
+  --       on_attach = function(bufnr)
+  --           -- do some buffer keymap
+  --       end,
+  --   },
+  -- },
   -- { -- Turns jupyter notebooks into md files! Super neat, but no lsp
   --     'goerz/jupytext.nvim',
   --     version = '0.2.0',
@@ -403,58 +414,58 @@ return {
   --       jupytext = '/home/jonas/dev/envs/neovim/bin/jupytext',
   --   },  -- see Options
 
-  { -- directly open ipynb files as quarto docuements
-    -- and convert back behind the scenes
-    'GCBallesteros/jupytext.nvim',
-    config = true,
-    -- opts = {
-    --   custom_language_formatting = {
-    --     python = {
-    --       extension = 'qmd',
-    --       style = 'quarto',
-    --       force_ft = 'quarto',
-    --     },
-    --     r = {
-    --       extension = 'qmd',
-    --       style = 'quarto',
-    --       force_ft = 'quarto',
-    --     },
-    --   },
-    -- },
-  },
-  { -- Quarto is supposed to help with LSP in jupyter notebooks converted to MD by jupytext
-    "quarto-dev/quarto-nvim",
-    dependencies = {
-      "jmbuhr/otter.nvim",
-      "nvim-treesitter/nvim-treesitter",
-
-  },
-    config = function()
-      require("quarto").setup{
-        debug = false,
-        closePreviewOnExit = true,
-        lspFeatures = {
-          enabled = true,
-          chunks = "curly",
-          languages = { "r", "python", "julia", "bash", "html" },
-          diagnostics = {
-            enabled = true,
-            triggers = { "BufWritePost" },
-          },
-          completion = {
-            enabled = true,
-          },
-        },
-        codeRunner = {
-          enabled = true,
-          default_method = "slime", -- "molten", "slime", "iron" or <function>
-          ft_runners = {}, -- filetype to runner, ie. `{ python = "molten" }`.
-          -- Takes precedence over `default_method`
-          never_run = { 'yaml' }, -- filetypes which are never sent to a code runner
-        },
-      }
-    end
-  },
+  -- { -- directly open ipynb files as quarto docuements
+  --   -- and convert back behind the scenes
+  --   'GCBallesteros/jupytext.nvim',
+  --   config = true,
+  --   -- opts = {
+  --   --   custom_language_formatting = {
+  --   --     python = {
+  --   --       extension = 'qmd',
+  --   --       style = 'quarto',
+  --   --       force_ft = 'quarto',
+  --   --     },
+  --   --     r = {
+  --   --       extension = 'qmd',
+  --   --       style = 'quarto',
+  --   --       force_ft = 'quarto',
+  --   --     },
+  --   --   },
+  --   -- },
+  -- },
+  -- { -- Quarto is supposed to help with LSP in jupyter notebooks converted to MD by jupytext
+  --   "quarto-dev/quarto-nvim",
+  --   dependencies = {
+  --     "jmbuhr/otter.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --
+  -- },
+  --   config = function()
+  --     require("quarto").setup{
+  --       debug = false,
+  --       closePreviewOnExit = true,
+  --       lspFeatures = {
+  --         enabled = true,
+  --         chunks = "curly",
+  --         languages = { "r", "python", "julia", "bash", "html" },
+  --         diagnostics = {
+  --           enabled = true,
+  --           triggers = { "BufWritePost" },
+  --         },
+  --         completion = {
+  --           enabled = true,
+  --         },
+  --       },
+  --       codeRunner = {
+  --         enabled = true,
+  --         default_method = "slime", -- "molten", "slime", "iron" or <function>
+  --         ft_runners = {}, -- filetype to runner, ie. `{ python = "molten" }`.
+  --         -- Takes precedence over `default_method`
+  --         never_run = { 'yaml' }, -- filetypes which are never sent to a code runner
+  --       },
+  --     }
+  --   end
+  -- },
   {
       "benlubas/molten-nvim",
       version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
@@ -488,16 +499,6 @@ return {
   --   "MeanderingProgrammer/render-markdown.nvim",
   --   ft = { "markdown", "codecompanion" }
   -- },
-  {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-    opts = {
-      preview = {
-        filetypes = { "codecompanion" },
-        ignore_buftypes = {},
-      },
-    },
-  },
   {
     "echasnovski/mini.diff",
     config = function()
