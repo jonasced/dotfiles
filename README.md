@@ -126,6 +126,9 @@ Search for opening and closing folds in help
 #### Inspecting code
 K (uppercase) opens documentation of variable/function/class etc.
 
+#### Tabpage
+The number in the top right is tabs! See tabpage for info
+
 #### Jumps
 Jumps in neovim! Use CTRL-] to jump to definition, CTRL-O for older and CTRL-I for newer in jump list. See jump list with :ju
 
