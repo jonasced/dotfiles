@@ -152,6 +152,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# Claude token
+export ANTHROPIC_API_KEY=$(cat ~/.claude-token)
+
 # Restart your shell for the changes to take effect.
 
 # Load pyenv-virtualenv automatically by adding
@@ -165,6 +168,3 @@ eval "$(starship init zsh)"
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh --disable-up-arrow)"
-
-neofetch
-
