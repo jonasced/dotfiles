@@ -194,7 +194,7 @@ cmd(":command -nargs=+ Rg :lua require('telescope.builtin').grep_string({search 
 -- Builtin LSP
 map(
     "n",
-    "<leader>ee",
+    "<leader>de",
     function() vim.diagnostic.open_float({ focusable = true }) end,
     { desc = "Expand an LSP Error / diagnostic into a float for copying" }
 )
