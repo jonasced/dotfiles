@@ -132,7 +132,10 @@ fi
 export PATH="$PATH:/opt/nvim/"
 # nvim pre-build archive
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
- 
+
+# Go
+export PATH=$PATH:/usr/local/go/bin
+
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
