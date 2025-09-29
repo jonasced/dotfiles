@@ -150,12 +150,11 @@ eval "$(pyenv virtualenv-init -)"
 
 eval "$(starship init bash)"
 
+# Created by `pipx` on 2025-06-04 09:27:25
+export PATH="$PATH:/home/jonas/.local/bin"
 
 # NOTE: Atuin should be started LAST: https://github.com/atuinsh/atuin/issues/380
 . "$HOME/.atuin/bin/env"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash --disable-up-arrow)"
-
-# Created by `pipx` on 2025-06-04 09:27:25
-export PATH="$PATH:/home/jonas/.local/bin"
