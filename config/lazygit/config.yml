@@ -453,8 +453,8 @@ keybinding:
     gotoTop: <
     gotoBottom: ">"
     toggleRangeSelect: v
-    rangeSelectDown: <s-down>
-    rangeSelectUp: <s-up>
+    rangeSelectDown: <c-J>
+    rangeSelectUp: <c-K>
     prevBlock: <left>
     nextBlock: <right>
     prevBlock-alt: h
@@ -565,8 +565,8 @@ keybinding:
     markCommitAsFixup: f
     createFixupCommit: F
     squashAboveCommits: S
-    moveDownCommit: <c-J>
-    moveUpCommit: <c-K>
+    moveDownCommit: <s-down>
+    moveUpCommit: <s-up>
     amendToCommit: A
     resetCommitAuthor: a
     pickCommit: p
