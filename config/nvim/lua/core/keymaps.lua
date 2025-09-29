@@ -80,7 +80,7 @@ local cmd = vim.cmd -- execute vimscript commands
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", {desc = "Open lazygit"})
 
 -- CodeCompanion
-map({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+map({ "n", "v" }, "<leader>ai", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 map({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
 map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 
