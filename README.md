@@ -92,6 +92,14 @@ I've also discovered that you can map arbitrary unicode characters as well! Adde
 ### tmux
 Notify when process is done by prefix + m! (https://github.com/rickstaa/tmux-notify)
 
+#### Pane workflow
+You can have a separate pane next to neovim. Sometimes you want to move it however, see below
+
+C-b ! -> break pane to new window
+
+:resize-pane Up/Do/Le/Ri # cells to resize
+:join-pane -s (from there to here) / -t (this to there) s:x.x (session:window.pane)
+
 ### Rust
 
 There are some behaviors of `rust-analyzer` and the way it interacts with Neovim that may make you think your
