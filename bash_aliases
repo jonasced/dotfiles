@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# Kanata start alias
+# Custom dotfile aliases
 alias ferroamp='/home/jonas/.dotfiles/tmux_ferroamp.sh'
 alias certainli='/home/jonas/.dotfiles/tmux_certainli.sh'
 alias misc='/home/jonas/.dotfiles/tmux_misc.sh'
+alias ferrossh='/home/jonas/.dotfiles/tmux_ferrossh.sh'
 alias kanatastart='sudo /home/jonas/.cargo/bin/kanata --cfg /home/jonas/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd'
 
 # Jira aliases

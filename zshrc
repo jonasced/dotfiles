@@ -1,6 +1,19 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+ssh-retry() {
+    end=$((SECONDS+150))
+    while [ $SECONDS -lt $end ]; do
+        if ssh "$1"; then
+            echo "Success!"
+            return 0
+        fi
+        sleep 1
+    done
+    echo "Timeout"
+    return 1
+}
+
 # XXX:FIXME workaround for remote terminals not accepting ghostty
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
     export TERM=xterm-256color
