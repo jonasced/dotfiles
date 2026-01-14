@@ -1,0 +1,19 @@
+#!/bin/sh
+# Run this script in your local ehubapps folder to run cargo on same state remote
+# Optional argument for running a specific folder only
+# Aliased to scargo, it runs as follows:
+# `scargo check` or `scargo check besserwisser`
+CURRENT_BRANCH=$(git branch --show-current)
+COMMAND=$1
+FOLDER=$2
+echo "Push local changes to remote..."
+git fetch && [ $(git rev-parse HEAD) = $(git rev-parse @{u}) ] && echo "In sync" || git push
+
+ssh sonic "
+cd /home/jonas/ehubapps/$FOLDER;
+echo 'Setting sonic to correct branch and pulling...';
+git checkout $CURRENT_BRANCH;
+git fetch && [ $(git rev-parse HEAD) = $(git rev-parse @{u}) ] && echo "In sync" || git pull
+echo 'Running cargo $COMMAND';
+/home/jonas/.cargo/bin/cargo $COMMAND
+"
