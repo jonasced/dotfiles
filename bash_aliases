@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Sonic remote command alias
+alias scargo='/home/jonas/.dotfiles/scripts/sonic-cargo'
+
 # Custom dotfile aliases
 alias ferroamp='/home/jonas/.dotfiles/tmux_ferroamp.sh'
 alias certainli='/home/jonas/.dotfiles/tmux_certainli.sh'

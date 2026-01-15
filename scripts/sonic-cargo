@@ -3,17 +3,37 @@
 # Optional argument for running a specific folder only
 # Aliased to scargo, it runs as follows:
 # `scargo check` or `scargo check besserwisser`
+# or if you're fancy:
+# `scargo "zigbuild --target=armv7-unknown-linux-gnueabihf --release" yass-rs; scp sonic:/home/jonas/ehubapps/target/armv7-unknown-linux-gnueabihf/release/yass-rs fe-ace-5927:/work/jonas`
+# `scargo "zigbuild --target aarch64-unknown-linux-gnu --release" yass-rs; scp sonic:/home/jonas/target/aarch64-unknown-linux-gnu/release/yass-rs staging-pid-PH10002-P03-X24260011:/data/dev/jonas/; echo $?`
 CURRENT_BRANCH=$(git branch --show-current)
 COMMAND=$1
 FOLDER=$2
-echo "Push local changes to remote..."
-git fetch && [ $(git rev-parse HEAD) = $(git rev-parse @{u}) ] && echo "In sync" || git push
+echo "Push local changes to remote without CI step..."
+
+git fetch
+LOCAL=$(git rev-parse HEAD)
+REMOTE=$(git rev-parse origin/"$CURRENT_BRANCH")
+
+if [ "$LOCAL" != "$REMOTE" ]; then
+    echo "Changes detected, syncing..."
+    git push -o ci.skip
+else
+    echo "Already in sync, nothing to do"
+fi
 
 ssh sonic "
 cd /home/jonas/ehubapps/$FOLDER;
 echo 'Setting sonic to correct branch and pulling...';
 git checkout $CURRENT_BRANCH;
-git fetch && [ $(git rev-parse HEAD) = $(git rev-parse @{u}) ] && echo "In sync" || git pull
+git fetch;
+REMOTE=$(git rev-parse origin/"$CURRENT_BRANCH")
+if [ '$LOCAL' != '$REMOTE' ]; then
+    echo 'Changes detected, syncing...'
+    git pull
+else
+    echo 'Already in sync, nothing to do'
+fi
 echo 'Running cargo $COMMAND';
 /home/jonas/.cargo/bin/cargo $COMMAND
 "

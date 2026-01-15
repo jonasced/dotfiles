@@ -88,6 +88,7 @@ map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true
 cmd([[cab cc CodeCompanion]])
 
 -- Open files in Chrome
+-- :lua vim.ui.open(vim.fn.expand('%'))  also works but for default browser
 map("n", "<leader>fx", '<cmd>!google-chrome "%"<cr>', { desc = "Open file in Chrome" })
 
 -- Allow to save files as sudo (even if Neovim started without sudo)
@@ -196,7 +197,7 @@ map(
     "n",
     "<leader>de",
     function() vim.diagnostic.open_float({ focusable = true }) end,
-    { desc = "Expand an LSP Error / diagnostic into a float for copying" }
+    { desc = "Expand/focus/toggle an LSP Error / diagnostic into a float for copying" }
 )
 map("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "LSP information" })
 map("n", "<leader>lI", "<cmd>Mason<CR>", { desc = "LSP installer" })

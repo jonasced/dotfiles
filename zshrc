@@ -171,6 +171,11 @@ eval "$(pyenv init -)"
 # Claude token
 export ANTHROPIC_API_KEY=$(cat ~/.claude-token)
 
+# Export gitlab token to env
+# export GITLAB_VIM_URL="https://gitlab.ferroamp.com/"
+# export GITLAB_URL="https://gitlab.ferroamp.com/"
+# export GITLAB_TOKEN=$(cat ~/dev/ferroamp/.gitlab-token-master)
+
 # Restart your shell for the changes to take effect.
 
 # Load pyenv-virtualenv automatically by adding

@@ -24,7 +24,7 @@
 	changed = yellow
 	untracked = cyan
 [rerere]
-	enabled = true
+	enabled = false
 [pull]
 	rebase = true
 [init]
