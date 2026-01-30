@@ -198,16 +198,6 @@ return {
     end,
   },
 
-  -- Smooth escaping
-  -- Removed due to capslock -> escape changes. This used to do escape on jk or kj
-  -- {
-  --   "max397574/better-escape.nvim",
-  --   event = "InsertCharPre",
-  --   config = function()
-  --     require("configs.better-escape").config()
-  --   end,
-  -- },
-
   -- JSON schemas
   {
     "b0o/SchemaStore.nvim",
@@ -260,9 +250,21 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+      "williamboman/mason-lspconfig.nvim",
       "simrat39/rust-tools.nvim",
-"Hoffs/omnisharp-extended-lsp.nvim",
+      "Hoffs/omnisharp-extended-lsp.nvim",
       "Issafalcon/lsp-overloads.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+
+      -- Useful status updates for LSP.
+      -- This is the progress messages located at the bottom right
+      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+      { "j-hui/fidget.nvim",       opts = {} },
+
+      -- Allows extra capabilities provided by nvim-cmp
+      "hrsh7th/cmp-nvim-lsp",
+
     },
     config = function()
       require("configs.lsp").setup()
@@ -371,101 +373,6 @@ return {
         "nvim-lua/plenary.nvim",
     },
   },
-  -- {
-  --     "Exafunction/windsurf.nvim",
-  --     dependencies = {
-  --         "nvim-lua/plenary.nvim",
-  --         "hrsh7th/nvim-cmp",
-  --     },
-  --     config = function()
-  --         require("codeium").setup({
-  --         })
-  --     end
-  -- },
-  -- Replaced by windsurf!
-  -- {
-  --   'Exafunction/codeium.vim',
-  --   event = 'BufEnter'
-  -- },
-  -- jupyter integration
-  -- {
-  --   "SUSTech-data/neopyter",
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     'nvim-treesitter/nvim-treesitter', -- neopyter don't depend on `nvim-treesitter`, but does depend on treesitter parser of python
-  --     'AbaoFromCUG/websocket.nvim',  -- for mode='direct'
-  --   },
-  --
-  --   ---@type neopyter.Option
-  --   opts = {
-  --       mode="direct",
-  --       remote_address = "127.0.0.1:9001",
-  --       file_pattern = { "*.ju.*" },
-  --       on_attach = function(bufnr)
-  --           -- do some buffer keymap
-  --       end,
-  --   },
-  -- },
-  -- { -- Turns jupyter notebooks into md files! Super neat, but no lsp
-  --     'goerz/jupytext.nvim',
-  --     version = '0.2.0',
-  --     opts = {
-  --       -- default settings
-  --       jupytext = '/home/jonas/dev/envs/neovim/bin/jupytext',
-  --   },  -- see Options
-
-  -- { -- directly open ipynb files as quarto docuements
-  --   -- and convert back behind the scenes
-  --   'GCBallesteros/jupytext.nvim',
-  --   config = true,
-  --   -- opts = {
-  --   --   custom_language_formatting = {
-  --   --     python = {
-  --   --       extension = 'qmd',
-  --   --       style = 'quarto',
-  --   --       force_ft = 'quarto',
-  --   --     },
-  --   --     r = {
-  --   --       extension = 'qmd',
-  --   --       style = 'quarto',
-  --   --       force_ft = 'quarto',
-  --   --     },
-  --   --   },
-  --   -- },
-  -- },
-  -- { -- Quarto is supposed to help with LSP in jupyter notebooks converted to MD by jupytext
-  --   "quarto-dev/quarto-nvim",
-  --   dependencies = {
-  --     "jmbuhr/otter.nvim",
-  --     "nvim-treesitter/nvim-treesitter",
-  --
-  -- },
-  --   config = function()
-  --     require("quarto").setup{
-  --       debug = false,
-  --       closePreviewOnExit = true,
-  --       lspFeatures = {
-  --         enabled = true,
-  --         chunks = "curly",
-  --         languages = { "r", "python", "julia", "bash", "html" },
-  --         diagnostics = {
-  --           enabled = true,
-  --           triggers = { "BufWritePost" },
-  --         },
-  --         completion = {
-  --           enabled = true,
-  --         },
-  --       },
-  --       codeRunner = {
-  --         enabled = true,
-  --         default_method = "slime", -- "molten", "slime", "iron" or <function>
-  --         ft_runners = {}, -- filetype to runner, ie. `{ python = "molten" }`.
-  --         -- Takes precedence over `default_method`
-  --         never_run = { 'yaml' }, -- filetypes which are never sent to a code runner
-  --       },
-  --     }
-  --   end
-  -- },
   {
       "benlubas/molten-nvim",
       version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
@@ -495,10 +402,6 @@ return {
       })
       end
     },
-  -- {
-  --   "MeanderingProgrammer/render-markdown.nvim",
-  --   ft = { "markdown", "codecompanion" }
-  -- },
   {
     "echasnovski/mini.diff",
     config = function()
@@ -535,5 +438,255 @@ return {
       config = function()
           require'window-picker'.setup()
       end,
-  }
+  },
+  -- {
+  --   'https://gitlab.com/gitlab-org/editor-extensions/gitlab.vim.git',
+  --   -- Activate when a file is created/opened
+  --   event = { 'BufReadPre', 'BufNewFile' },
+  --   -- Activate when a supported filetype is open
+  --   ft = { 'go', 'javascript', 'python', 'ruby' },
+  --   cond = function()
+  --     -- Only activate if token is present in environment variable.
+  --     -- Remove this line to use the interactive workflow.
+  --     return vim.env.GITLAB_TOKEN ~= nil and vim.env.GITLAB_TOKEN ~= ''
+  --   end,
+  --   opts = {
+  --     statusline = {
+  --       -- Hook into the built-in statusline to indicate the status
+  --       -- of the GitLab Duo Code Suggestions integration
+  --       enabled = true,
+  --     },
+  --   },
+  -- }
+  -- Didn't get to work, perhaps look at another time
+  -- {
+  -- "harrisoncramer/gitlab.nvim",
+  -- dependencies = {
+  --   "MunifTanjim/nui.nvim",
+  --   "nvim-lua/plenary.nvim",
+  --   "sindrets/diffview.nvim",
+  --   "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
+  --   "nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
+  -- },
+  -- build = function () require("gitlab.server").build(true) end, -- Builds the Go binary
+  -- config = function()
+  --   require("gitlab").setup()
+  -- end,
+  -- }
+  {
+    "saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    config = function()
+      local crates = require("crates")
+      crates.setup({
+        completion = {
+          crates = {
+            enabled = true,
+          },
+        },
+        lsp = {
+          enabled = true,
+          actions = true,
+          completion = true,
+          hover = true,
+        },
+      })
+      -- TODO: move into keymaps
+      -- vim.keymap.set("n", "<leader>Ct", crates.toggle, { silent = true, desc = "Crates toggle" })
+      -- vim.keymap.set("n", "<leader>Cr", crates.reload, { silent = true, desc = "Crates reload" })
+      --
+      -- vim.keymap.set("n", "<leader>Cv", crates.show_versions_popup, { silent = true, desc = "Versions" })
+      -- vim.keymap.set("n", "<leader>Cf", crates.show_features_popup, { silent = true, desc = "Features" })
+      -- vim.keymap.set("n", "<leader>Cd", crates.show_dependencies_popup, { silent = true, desc = "Dependencies" })
+      --
+      -- vim.keymap.set("n", "<leader>Cu", crates.update_crate, { silent = true, desc = "Update crate" })
+      -- vim.keymap.set("n", "<leader>CU", crates.upgrade_crate, { silent = true, desc = "Upgrade crate" })
+      --
+      -- vim.keymap.set(
+      --   "n",
+      --   "<leader>Cx",
+      --   crates.expand_plain_crate_to_inline_table,
+      --   { silent = true, desc = "Expande plain crate to inline table" }
+      -- )
+      -- vim.keymap.set(
+      --   "n",
+      --   "<leader>CX",
+      --   crates.extract_crate_into_table,
+      --   { silent = true, desc = "Extract crate into table" }
+      -- )
+      --
+      -- vim.keymap.set("n", "<leader>CH", crates.open_homepage, { silent = true, desc = "Open homepage" })
+      -- vim.keymap.set("n", "<leader>CR", crates.open_repository, { silent = true, desc = "Open repository" })
+      -- vim.keymap.set("n", "<leader>CD", crates.open_documentation, { silent = true, desc = "Open documentation" })
+      -- vim.keymap.set("n", "<leader>CC", crates.open_crates_io, { silent = true, desc = "Open crates.io" })
+      -- vim.keymap.set("n", "<leader>CL", crates.open_lib_rs, { silent = true, desc = "Open lib.rs" })
+    end,
+  },
+  -- Autoformat
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>f",
+        function()
+          require("conform").format({ async = true, lsp_format = "fallback" })
+        end,
+        mode = "",
+        desc = "[F]ormat buffer",
+      },
+    },
+    opts = {
+      notify_on_error = false,
+      format_on_save = function(bufnr)
+        -- Disable "format_on_save lsp_fallback" for languages that don't
+        -- have a well standardized coding style. You can add additional
+        -- languages here or re-enable it for the disabled ones.
+        local disable_filetypes = { c = true, cpp = true }
+        local lsp_format_opt
+        if disable_filetypes[vim.bo[bufnr].filetype] then
+          lsp_format_opt = "never"
+        else
+          lsp_format_opt = "fallback"
+        end
+        return {
+          timeout_ms = 500,
+          lsp_format = lsp_format_opt,
+        }
+      end,
+      log_level = vim.log.levels.DEBUG,
+      formatters_by_ft = {
+        lua = { "stylua" },
+        -- Conform can also run multiple formatters sequentially
+        python = { "ruff" },
+        --
+        -- You can use 'stop_after_first' to run the first available formatter from the list
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+      },
+    },
+  },
+
+
+  -- {
+  --   "folke/snacks.nvim",
+  --   priority = 1000,
+  --   lazy = false,
+  --   opts = {
+  --     -- your configuration comes here
+  --     -- or leave it empty to use the default settings
+  --     -- refer to the configuration section below
+  --     lazygit = { enabled = true },
+  --     notifier = { enabled = true },
+  --   },
+  --   keys = {
+  --     {
+  --       "<leader>n",
+  --       function()
+  --         Snacks.notifier.show_history()
+  --       end,
+  --       desc = "Notification History",
+  --     },
+  --     {
+  --       "<leader>bd",
+  --       function()
+  --         Snacks.bufdelete()
+  --       end,
+  --       desc = "Delete Buffer",
+  --     },
+  --     {
+  --       "<leader>gB",
+  --       function()
+  --         Snacks.gitbrowse()
+  --       end,
+  --       desc = "Git Browse",
+  --     },
+  --     {
+  --       "<leader>gb",
+  --       function()
+  --         Snacks.git.blame_line()
+  --       end,
+  --       desc = "Git Blame Line",
+  --     },
+  --     {
+  --       "<leader>gf",
+  --       function()
+  --         Snacks.lazygit.log_file()
+  --       end,
+  --       desc = "Lazygit Current File History",
+  --     },
+  --     {
+  --       "<leader>gg",
+  --       function()
+  --         Snacks.lazygit()
+  --       end,
+  --       desc = "Lazygit",
+  --     },
+  --     {
+  --       "<leader>gl",
+  --       function()
+  --         Snacks.lazygit.log()
+  --       end,
+  --       desc = "Lazygit Log (cwd)",
+  --     },
+  --     {
+  --       "<leader>un",
+  --       function()
+  --         Snacks.notifier.hide()
+  --       end,
+  --       desc = "Dismiss All Notifications",
+  --     },
+  --     {
+  --       "]]",
+  --       function()
+  --         Snacks.words.jump(vim.v.count1)
+  --       end,
+  --       desc = "Next Reference",
+  --       mode = { "n", "t" },
+  --     },
+  --     {
+  --       "[[",
+  --       function()
+  --         Snacks.words.jump(-vim.v.count1)
+  --       end,
+  --       desc = "Prev Reference",
+  --       mode = { "n", "t" },
+  --     },
+  --   },
+  --   init = function()
+  --     vim.api.nvim_create_autocmd("User", {
+  --       pattern = "VeryLazy",
+  --       callback = function()
+  --         -- Setup some globals for debugging (lazy-loaded)
+  --         _G.dd = function(...)
+  --           Snacks.debug.inspect(...)
+  --         end
+  --         _G.bt = function()
+  --           Snacks.debug.backtrace()
+  --         end
+  --         vim.print = _G.dd -- Override print to use snacks for `:=` command
+  --
+  --         -- Create some toggle mappings
+  --         Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+  --         Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+  --         Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+  --         Snacks.toggle.diagnostics():map("<leader>ud")
+  --         Snacks.toggle.line_number():map("<leader>ul")
+  --         Snacks.toggle
+  --             .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+  --             :map("<leader>uc")
+  --         Snacks.toggle.treesitter():map("<leader>uT")
+  --         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
+  --         Snacks.toggle.inlay_hints():map("<leader>uh")
+  --       end,
+  --     })
+  --   end,
+  -- },
+
+
+
+
 }

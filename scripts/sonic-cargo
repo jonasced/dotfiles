@@ -4,13 +4,34 @@
 # Aliased to scargo, it runs as follows:
 # `scargo check` or `scargo check besserwisser`
 # or if you're fancy:
+# `scargo bbb taints taintd fe-ace-5927`
+# which is short-hand for
 # `scargo "zigbuild --target=armv7-unknown-linux-gnueabihf --release" yass-rs; scp sonic:/home/jonas/ehubapps/target/armv7-unknown-linux-gnueabihf/release/yass-rs fe-ace-5927:/work/jonas`
 # `scargo "zigbuild --target aarch64-unknown-linux-gnu --release" yass-rs; scp sonic:/home/jonas/target/aarch64-unknown-linux-gnu/release/yass-rs staging-pid-PH10002-P03-X24260011:/data/dev/jonas/; echo $?`
-CURRENT_BRANCH=$(git branch --show-current)
-COMMAND=$1
-FOLDER=$2
-echo "Push local changes to remote without CI step..."
 
+# Cargo command to run remote. bbb/core are special build commands, see below
+COMMAND=$1
+# Sonic ehubapps folder to execute the command in
+FOLDER=$2
+# Binary to scp to target (used with bbb/core commands)
+BINARY=$3
+# Target to scp to (used with bbb/core commands)
+TARGET=$4
+
+# Handle special commands bbb/core for building and deploying
+# Only to be used in combination with folder/binary/target
+ARCH=""
+if [ "$COMMAND" = "bbb" ]; then
+    ARCH="armv7-unknown-linux-gnueabihf"
+    COMMAND="zigbuild --target=$ARCH --release"
+elif [ "$COMMAND" = "core" ]; then
+    ARCH="aarch64-unknown-linux-gnu"
+    COMMAND="zigbuild --target=$ARCH --release"
+fi
+
+
+echo "Push local changes to remote without CI step..."
+CURRENT_BRANCH=$(git branch --show-current)
 git fetch
 LOCAL=$(git rev-parse HEAD)
 REMOTE=$(git rev-parse origin/"$CURRENT_BRANCH")
@@ -23,17 +44,18 @@ else
 fi
 
 ssh sonic "
+echo 'Navigating to /home/jonas/ehubapps/$FOLDER'
 cd /home/jonas/ehubapps/$FOLDER;
 echo 'Setting sonic to correct branch and pulling...';
+git fetch
 git checkout $CURRENT_BRANCH;
-git fetch;
-REMOTE=$(git rev-parse origin/"$CURRENT_BRANCH")
-if [ '$LOCAL' != '$REMOTE' ]; then
-    echo 'Changes detected, syncing...'
-    git pull
-else
-    echo 'Already in sync, nothing to do'
-fi
+git pull
 echo 'Running cargo $COMMAND';
 /home/jonas/.cargo/bin/cargo $COMMAND
 "
+
+if [ "$BINARY" != "" ]; then
+    echo "Sending $BINARY to target"
+    scp sonic:/home/jonas/ehubapps/target/$ARCH/release/"$BINARY" "$TARGET":/data/dev/jonas/;
+    echo "Transfer completed with exit code $?"
+fi

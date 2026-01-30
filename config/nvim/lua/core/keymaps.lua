@@ -102,8 +102,6 @@ map('n', '<leader>y', '<Plug>OSCYankOperator')
 map('n', '<leader>yy', '<leader>c_', {remap = true})
 map('v', '<leader>y', '<Plug>OSCYankVisual')
 
--- Escape terminal emulator
-map("t", "<C-q>", "<C-\\><C-n>", { desc = "Escape terminal" })
 
 -- Create new empty buffer
 map("n", "<leader>fn", "<cmd>enew<CR>", opts)
@@ -141,58 +139,67 @@ map("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "Stage git hunk"
 map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", { desc = "Unstage git hunk" })
 map("n", "<leader>gd", "<cmd>Gitsigns diffthis HEAD<CR>", { desc = "View git diff" })
 
+-- Improved terminal mappings
+map("t", "<C-h>", "<C-\\><C-n><C-W>h", { desc = "Terminal left window navigation", silent = true })
+-- map("t", "<C-j>", "<C-\\><C-n><C-W>j", { desc = "Terminal down window navigation", silent = true })
+-- map("t", "<C-k>", "<C-\\><C-n><C-W>k", { desc = "Terminal up window navigation", silent = true })
+map("t", "<C-l>", "<C-\\><C-n><C-W>l", { desc = "Terminal right window naviation", silent = true })
+map("t", "<C-t>", "<cmd>ToggleTermToggleAll<CR>", { desc = "Toggle all terminal windows", silent = true })
+-- Escape terminal emulator
+map("t", "<C-q>", "<C-\\><C-n>", { desc = "Escape terminal" })
 -- Toggle Term
 map("n", "<C-t>", "<cmd>ToggleTermToggleAll<CR>", { desc = "Toggle all terminal windows", silent = true })
 map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { desc = "ToggleTerm float" })
-map("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "ToggleTerm horizontal split" })
+map("n", "<leader>ts", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "ToggleTerm horizontal split" })
 map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", { desc = "ToggleTerm vertical split" })
 map("n", "<leader>tp", "<cmd>lua require('core.utils'):toggle_term_cmd('python')<CR>", { desc = "ToggleTerm python" })
 map("n", "<leader>tn", "<cmd>lua require('core.utils'):toggle_term_cmd('node')<CR>", { desc = "ToggleTerm node" })
 map("n", "<leader>vv", "<cmd>TermExec cmd='vale %' direction=float<CR>", { desc = "ToggleTerm node" })
 
+-- Aerial
+map("n", "{", "<cmd>AerialPrev<CR>", { desc = "" })
+map("n", "}", "<cmd>AerialNext<CR>", { desc = "" })
+map("n", "<leader>aa", "<cmd>AerialToggle!<CR>", { desc = "" })
+
 -- Telescope
 map(
   "n",
-  "<leader>fd",
+  "<leader>sd",
   "<cmd>lua require('telescope.builtin').find_files({prompt_title='Dotfiles', cwd='$HOME/.dotfiles'})<CR>",
   { desc = "Search dotfiles" }
 )
 map(
   "n",
-  "<leader>fc",
+  "<leader>ss",
   "<cmd>lua require('telescope.builtin').lsp_document_symbols({show_line=true})<CR>",
   { desc = "Search symbols and show line" }
 )
-map("n", "{", "<cmd>AerialPrev<CR>", { desc = "" })
-map("n", "}", "<cmd>AerialNext<CR>", { desc = "" })
-map("n", "<leader>aa", "<cmd>AerialToggle!<CR>", { desc = "" })
-map("n", "<leader>rr", "<cmd>Telescope resume<CR>", { desc = "Resume the last picker" })
-map("n", "<leader>fg", "<cmd>Telescope live_grep_args<CR>", { desc = "Search grep" })
-map("n", "<leader>fa", "<cmd>Telescope live_grep_args hidden=true no_ignore=true<CR>", { desc = "Search grep including hidden/ignored" })
-map("n", "<leader>fw", "<cmd>Telescope grep_string<CR>", { desc = "Grep string under cursor" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Git status" })
 map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { desc = "Git branches" })
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "Git commits" })
-map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Search files" })
-map("n", "<leader>fh", "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", { desc = "Search files including hidden/ignored" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Search buffers" })
-map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "Search marks" })
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Search old files" })
-map("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", { desc = "Search help" })
+map("n", "<leader>rr", "<cmd>Telescope resume<CR>", { desc = "Resume the last picker" })
+map("n", "<leader>sg", "<cmd>Telescope live_grep_args<CR>", { desc = "Search grep" })
+map("n", "<leader>sa", "<cmd>Telescope live_grep_args hidden=true no_ignore=true<CR>", { desc = "Search grep including hidden/ignored" })
+map("n", "<leader>sw", "<cmd>Telescope grep_string<CR>", { desc = "Grep string under cursor" })
+map("n", "<leader>sf", "<cmd>Telescope find_files<CR>", { desc = "Search files" })
+map("n", "<leader>sh", "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", { desc = "Search files including hidden/ignored" })
+map("n", "<leader><leader>", "<cmd>Telescope buffers<CR>", { desc = "Search buffers" })
+map("n", "<leader>sm", "<cmd>Telescope marks<CR>", { desc = "Search marks" })
+map("n", "<leader>so", "<cmd>Telescope oldfiles<CR>", { desc = "Search old files" })
+map("n", "<leader>se", "<cmd>Telescope help_tags<CR>", { desc = "Search help" })
 map("n", "<leader>sm", "<cmd>Telescope man_pages<CR>", { desc = "Search man" })
 map("n", "<leader>sr", "<cmd>Telescope registers<CR>", { desc = "Search registers" })
 map("n", "<leader>sk", "<cmd>Telescope keymaps<CR>", { desc = "Search keymaps" })
 map("n", "<leader>sc", "<cmd>Telescope commands<CR>", { desc = "Search commands" })
 map("n", "<leader>bd", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Buffer diagnostics" })
 map("n", "<leader>wd", "<cmd>Telescope diagnostics<CR>", { desc = "Workspace diagnostics" })
-map("n", "<leader>vd", vim.diagnostic.open_float, { desc = "View diagnostic" })
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic previous" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic next" })
 map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Fuzzy search in current buffer" })
-
 cmd(":command -nargs=+ Rg :lua require('telescope.builtin').grep_string({search = <q-args>})<CR>")
 
 -- Builtin LSP
+map("n", "<leader>vd", vim.diagnostic.open_float, { desc = "View diagnostic" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic previous" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic next" })
 map(
     "n",
     "<leader>de",
@@ -201,13 +208,6 @@ map(
 )
 map("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "LSP information" })
 map("n", "<leader>lI", "<cmd>Mason<CR>", { desc = "LSP installer" })
-
--- Improved terminal mappings
-map("t", "<C-h>", "<C-\\><C-n><C-W>h", { desc = "Terminal left window navigation", silent = true })
-map("t", "<C-j>", "<C-\\><C-n><C-W>j", { desc = "Terminal down window navigation", silent = true })
-map("t", "<C-k>", "<C-\\><C-n><C-W>k", { desc = "Terminal up window navigation", silent = true })
-map("t", "<C-l>", "<C-\\><C-n><C-W>l", { desc = "Terminal right window naviation", silent = true })
-map("t", "<C-t>", "<cmd>ToggleTermToggleAll<CR>", { desc = "Toggle all terminal windows", silent = true })
 
 -- Debugger
 local core_utils = require("core.utils")

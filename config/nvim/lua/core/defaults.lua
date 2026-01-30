@@ -15,7 +15,8 @@ local defaults = {
     repo = "EdenEast/nightfox.nvim",
     name = "nightfox",
     -- variants: nightfox, dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox
-    theme = "nightfox",
+    theme = "carbonfox",
+    -- theme = "duskfox",
     config = {
       options = {
         styles = {
