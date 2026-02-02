@@ -35,6 +35,7 @@ function M.config()
     local border_opts = {
       border = "rounded",
       winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+      max_height = 40
     }
 
     cmp.setup({
@@ -55,6 +56,9 @@ function M.config()
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
+      },
+      view = {
+        entries = {name = 'custom', selection_order = 'near_cursor' }
       },
       window = {
         completion = cmp.config.window.bordered(border_opts),
