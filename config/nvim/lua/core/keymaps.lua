@@ -87,9 +87,10 @@ map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true
 -- Expand 'cc' into 'CodeCompanion' in the command line
 cmd([[cab cc CodeCompanion]])
 
--- Open files in Chrome
+-- Open files externally
 -- :lua vim.ui.open(vim.fn.expand('%'))  also works but for default browser
 map("n", "<leader>fx", '<cmd>!google-chrome "%"<cr>', { desc = "Open file in Chrome" })
+map("n", "<leader>fz", '<cmd>!zathura "%" &<cr><cr>', { desc = "Open pdf using Zathura" })
 
 -- Allow to save files as sudo (even if Neovim started without sudo)
 map("c", "w!!", "w !sudo tee > /dev/null %", { desc = "Sudo write" })
