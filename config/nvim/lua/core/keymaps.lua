@@ -165,7 +165,7 @@ map("n", "<leader>aa", "<cmd>AerialToggle!<CR>", { desc = "" })
 -- Telescope
 map(
   "n",
-  "<leader>sd",
+  "<leader>st",
   "<cmd>lua require('telescope.builtin').find_files({prompt_title='Dotfiles', cwd='$HOME/.dotfiles'})<CR>",
   { desc = "Search dotfiles" }
 )
@@ -192,8 +192,8 @@ map("n", "<leader>sm", "<cmd>Telescope man_pages<CR>", { desc = "Search man" })
 map("n", "<leader>sr", "<cmd>Telescope registers<CR>", { desc = "Search registers" })
 map("n", "<leader>sk", "<cmd>Telescope keymaps<CR>", { desc = "Search keymaps" })
 map("n", "<leader>sc", "<cmd>Telescope commands<CR>", { desc = "Search commands" })
-map("n", "<leader>bd", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Buffer diagnostics" })
-map("n", "<leader>wd", "<cmd>Telescope diagnostics<CR>", { desc = "Workspace diagnostics" })
+map("n", "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Buffer diagnostics" })
+map("n", "<leader>sr", "<cmd>Telescope diagnostics<CR>", { desc = "Workspace diagnostics" })
 map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Fuzzy search in current buffer" })
 cmd(":command -nargs=+ Rg :lua require('telescope.builtin').grep_string({search = <q-args>})<CR>")
 
