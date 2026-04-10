@@ -5,6 +5,7 @@ alias scargo='/home/jonas/.dotfiles/scripts/sonic-cargo'
 
 # Custom dotfile aliases
 alias ferroamp='/home/jonas/.dotfiles/tmux_ferroamp.sh'
+alias sonic='/home/jonas/.dotfiles/tmux_sonic.sh'
 alias certainli='/home/jonas/.dotfiles/tmux_certainli.sh'
 alias misc='/home/jonas/.dotfiles/tmux_misc.sh'
 alias ferrossh='/home/jonas/.dotfiles/tmux_ferrossh.sh'
