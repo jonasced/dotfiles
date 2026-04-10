@@ -23,12 +23,13 @@ TARGET=$4
 ARCH=""
 if [ "$COMMAND" = "bbb" ]; then
     ARCH="armv7-unknown-linux-gnueabihf"
-    COMMAND="zigbuild --target=$ARCH --release"
+    FEATURES="--no-default-features --features ehub1"
+    COMMAND="zigbuild --target=$ARCH --release $FEATURES"
 elif [ "$COMMAND" = "core" ]; then
     ARCH="aarch64-unknown-linux-gnu"
-    COMMAND="zigbuild --target=$ARCH --release"
+    FEATURES="--no-default-features --features ehub2"
+    COMMAND="zigbuild --target=$ARCH --release $FEATURES"
 fi
-
 
 echo "Push local changes to remote without CI step..."
 CURRENT_BRANCH=$(git branch --show-current)
@@ -56,6 +57,6 @@ echo 'Running cargo $COMMAND';
 
 if [ "$BINARY" != "" ]; then
     echo "Sending $BINARY to target"
-    scp sonic:/home/jonas/ehubapps/target/$ARCH/release/"$BINARY" "$TARGET":/data/dev/jonas/;
+    scp sonic:/home/jonas/ehubapps/target/$ARCH/release/"$BINARY" "$TARGET":/work/jonas/;
     echo "Transfer completed with exit code $?"
 fi
