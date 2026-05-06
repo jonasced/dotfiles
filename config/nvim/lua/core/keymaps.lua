@@ -121,11 +121,19 @@ map("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "Stage git hunk"
 map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", { desc = "Unstage git hunk" })
 map("n", "<leader>gd", "<cmd>Gitsigns diffthis HEAD<CR>", { desc = "View git diff" })
 
--- Window navigation
-map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
-map("n", "<C-j>", "<C-w>j", { desc = "Move to below split" })
-map("n", "<C-k>", "<C-w>k", { desc = "Move to above split" })
-map("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
+-- Window / tmux-pane navigation: move between vim splits, fall back to tmux at edges
+local tmux_dir = { h = "L", j = "D", k = "U", l = "R" }
+local function navigate(dir)
+  local win = vim.api.nvim_get_current_win()
+  vim.cmd("wincmd " .. dir)
+  if vim.api.nvim_get_current_win() == win and os.getenv("TMUX") then
+    vim.fn.system("tmux select-pane -" .. tmux_dir[dir])
+  end
+end
+map("n", "<C-h>", function() navigate("h") end, { desc = "Move left (vim/tmux)" })
+map("n", "<C-j>", function() navigate("j") end, { desc = "Move down (vim/tmux)" })
+map("n", "<C-k>", function() navigate("k") end, { desc = "Move up (vim/tmux)" })
+map("n", "<C-l>", function() navigate("l") end, { desc = "Move right (vim/tmux)" })
 map("n", "<A-h>", "<cmd>vertical resize -2<CR>", { desc = "Resize split left" })
 map("n", "<A-j>", "<cmd>resize -2<CR>", { desc = "Resize split down" })
 map("n", "<A-k>", "<cmd>resize +2<CR>", { desc = "Resize split up" })
