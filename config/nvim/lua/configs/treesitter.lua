@@ -6,6 +6,7 @@ function M.config()
     local config = {
       ensure_installed = {
         "bash",
+        "comment",
         "json",
         "lua",
         "markdown",

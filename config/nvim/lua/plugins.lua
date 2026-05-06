@@ -152,6 +152,13 @@ return {
     end,
   },
 
+  -- Markdown rendering (hover docs, README files)
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+
   -- Syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
@@ -272,10 +279,14 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "ruff" },
+        rust = { "rustfmt" },
+        c = { "clang_format" },
+        yaml = { "prettier" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
+        ["*"] = { "trim_whitespace" },
       },
     },
   },
