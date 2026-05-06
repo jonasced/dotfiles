@@ -268,7 +268,7 @@ return {
           lsp_format = lsp_format_opt,
         }
       end,
-      log_level = vim.log.levels.DEBUG,
+      log_level = vim.log.levels.WARN,
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "ruff" },

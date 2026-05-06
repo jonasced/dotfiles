@@ -79,11 +79,6 @@ local cmd = vim.cmd -- execute vimscript commands
 -- Old lazygit simple
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", {desc = "Open lazygit"})
 
--- Open files externally
--- :lua vim.ui.open(vim.fn.expand('%'))  also works but for default browser
-map("n", "<leader>fx", '<cmd>!google-chrome "%"<cr>', { desc = "Open file in Chrome" })
-map("n", "<leader>fz", '<cmd>!zathura "%" &<cr><cr>', { desc = "Open pdf using Zathura" })
-
 -- Allow to save files as sudo (even if Neovim started without sudo)
 map("c", "w!!", "w !sudo tee > /dev/null %", { desc = "Sudo write" })
 
@@ -151,8 +146,6 @@ map("n", "<leader>ts", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "Tog
 map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", { desc = "ToggleTerm vertical split" })
 map("n", "<leader>tp", "<cmd>lua require('core.utils'):toggle_term_cmd('python')<CR>", { desc = "ToggleTerm python" })
 map("n", "<leader>tn", "<cmd>lua require('core.utils'):toggle_term_cmd('node')<CR>", { desc = "ToggleTerm node" })
-map("n", "<leader>vv", "<cmd>TermExec cmd='vale %' direction=float<CR>", { desc = "ToggleTerm node" })
-
 -- Aerial
 map("n", "{", "<cmd>AerialPrev<CR>", { desc = "" })
 map("n", "}", "<cmd>AerialNext<CR>", { desc = "" })
