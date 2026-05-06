@@ -5,22 +5,14 @@ function M.config()
   if status_ok then
     local config = {
       ensure_installed = {
-        "astro",
         "bash",
-        "comment",
-        "css",
-        "go",
-        "html",
-        "javascript",
         "json",
         "lua",
         "markdown",
         "markdown_inline",
         "python",
         "rust",
-        "scss",
-        "tsx",
-        "typescript",
+        "toml",
         "vimdoc",
         "yaml",
       },
@@ -39,7 +31,6 @@ function M.config()
           node_decremental = "<C-Backspace>",
         },
       },
-      autotag = { enable = true },
       indent = { enable = true },
       textobjects = {
         select = {

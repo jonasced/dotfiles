@@ -40,9 +40,7 @@ function M.config()
 
     cmp.setup({
       enabled = function()
-        local cmp_dap_ok, cmp_dap = pcall(require, "cmp_dap")
-        local is_prompt = vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
-        return is_prompt or cmp_dap_ok and cmp_dap.is_dap_buffer()
+        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
       end,
       preselect = cmp.PreselectMode.None,
       formatting = {
@@ -135,17 +133,6 @@ function M.config()
       },
     })
 
-    cmp.setup.filetype({
-      -- uncomment below when https://github.com/rcarriga/cmp-dap/issues/7 is fixed,
-      -- for now - use <C-x><C-o> to use omnifunc for completion suggestions
-      -- "dap-repl",
-      "dapui_watches",
-      "dapui_hover",
-    }, {
-      sources = {
-        { name = "dap" },
-      },
-    })
   end
 end
 

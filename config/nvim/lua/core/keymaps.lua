@@ -79,14 +79,6 @@ local cmd = vim.cmd -- execute vimscript commands
 -- Old lazygit simple
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", {desc = "Open lazygit"})
 
--- CodeCompanion
-map({ "n", "v" }, "<leader>ai", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-map({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-
--- Expand 'cc' into 'CodeCompanion' in the command line
-cmd([[cab cc CodeCompanion]])
-
 -- Open files externally
 -- :lua vim.ui.open(vim.fn.expand('%'))  also works but for default browser
 map("n", "<leader>fx", '<cmd>!google-chrome "%"<cr>', { desc = "Open file in Chrome" })
@@ -97,12 +89,6 @@ map("c", "w!!", "w !sudo tee > /dev/null %", { desc = "Sudo write" })
 
 -- Enter select mode from insert mode (useful for jumping between snippet nodes)
 map("i", "<M-g>", "<Esc>gh", { desc = "Insert mode --> select mode" })
-
--- Add OSCYank for remote yanking
-map('n', '<leader>y', '<Plug>OSCYankOperator')
-map('n', '<leader>yy', '<leader>c_', {remap = true})
-map('v', '<leader>y', '<Plug>OSCYankVisual')
-
 
 -- Create new empty buffer
 map("n", "<leader>fn", "<cmd>enew<CR>", opts)
@@ -139,6 +125,16 @@ map("n", "<leader>gr", "<cmd>Gitsigns reset_buffer<CR>", { desc = "Reset git buf
 map("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "Stage git hunk" })
 map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", { desc = "Unstage git hunk" })
 map("n", "<leader>gd", "<cmd>Gitsigns diffthis HEAD<CR>", { desc = "View git diff" })
+
+-- Window navigation
+map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
+map("n", "<C-j>", "<C-w>j", { desc = "Move to below split" })
+map("n", "<C-k>", "<C-w>k", { desc = "Move to above split" })
+map("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
+map("n", "<A-h>", "<cmd>vertical resize -2<CR>", { desc = "Resize split left" })
+map("n", "<A-j>", "<cmd>resize -2<CR>", { desc = "Resize split down" })
+map("n", "<A-k>", "<cmd>resize +2<CR>", { desc = "Resize split up" })
+map("n", "<A-l>", "<cmd>vertical resize +2<CR>", { desc = "Resize split right" })
 
 -- Improved terminal mappings
 map("t", "<C-h>", "<C-\\><C-n><C-W>h", { desc = "Terminal left window navigation", silent = true })
@@ -179,8 +175,8 @@ map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Git status" })
 map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { desc = "Git branches" })
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "Git commits" })
 map("n", "<leader>rr", "<cmd>Telescope resume<CR>", { desc = "Resume the last picker" })
-map("n", "<leader>sg", "<cmd>Telescope live_grep_args<CR>", { desc = "Search grep" })
-map("n", "<leader>sa", "<cmd>Telescope live_grep_args hidden=true no_ignore=true<CR>", { desc = "Search grep including hidden/ignored" })
+map("n", "<leader>sg", "<cmd>Telescope live_grep<CR>", { desc = "Search grep" })
+map("n", "<leader>sa", "<cmd>Telescope live_grep hidden=true no_ignore=true<CR>", { desc = "Search grep including hidden/ignored" })
 map("n", "<leader>sw", "<cmd>Telescope grep_string<CR>", { desc = "Grep string under cursor" })
 map("n", "<leader>sf", "<cmd>Telescope find_files<CR>", { desc = "Search files" })
 map("n", "<leader>sh", "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", { desc = "Search files including hidden/ignored" })

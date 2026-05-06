@@ -64,13 +64,3 @@ api.nvim_create_autocmd("User", {
   pattern = "VeryLazy",
 })
 
--- Set up format-on-save and linting
--- NOTE: This will run for languages whose LSP does not support formatting
-api.nvim_create_autocmd("BufWritePost", {
-  callback = function()
-    vim.cmd("FormatWriteLock")
-    require("lint").try_lint()
-  end,
-  group = my_autocmds,
-  pattern = "*",
-})

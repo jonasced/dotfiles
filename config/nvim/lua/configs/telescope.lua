@@ -85,18 +85,8 @@ function M.config()
           },
         },
       },
-      extensions = {
-        live_grep_args = {
-          auto_quoting = true,
-          mappings = {
-            i = multi_open_mappings,
-            n = multi_open_mappings,
-          },
-        },
-      },
     })
 
-    telescope.load_extension("live_grep_args")
     telescope.load_extension("fzf")
   end
 end
