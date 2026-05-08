@@ -55,6 +55,13 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.hcl",
 })
 
+-- Restore :LspRestart (nvim-lspconfig skips registering it on Neovim 0.11+ because
+-- a built-in :lsp command exists, triggering an early return in plugin/lspconfig.lua)
+vim.api.nvim_create_user_command("LspRestart", function()
+  vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = 0 }))
+  vim.cmd("edit")
+end, { desc = "Restart LSP servers for current buffer" })
+
 -- Set up keymaps
 api.nvim_create_autocmd("User", {
   callback = function()
