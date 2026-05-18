@@ -283,6 +283,17 @@ return {
     },
   },
 
+  -- Markdown in-buffer rendering (tables, headings, code blocks)
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    ft = { "markdown" },
+    opts = {},
+  },
+
   -- Autoformat
   {
     "stevearc/conform.nvim",

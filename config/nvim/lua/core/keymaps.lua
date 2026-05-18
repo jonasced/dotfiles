@@ -154,6 +154,20 @@ map("n", "<leader>ts", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "Tog
 map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", { desc = "ToggleTerm vertical split" })
 map("n", "<leader>tp", "<cmd>lua require('core.utils'):toggle_term_cmd('python')<CR>", { desc = "ToggleTerm python" })
 map("n", "<leader>tn", "<cmd>lua require('core.utils'):toggle_term_cmd('node')<CR>", { desc = "ToggleTerm node" })
+-- Markdown preview via glow (handles wide tables that exceed terminal width)
+-- Requires: glow (https://github.com/charmbracelet/glow) -- install via your package manager
+map("n", "<leader>mp", function()
+  local file = vim.fn.expand("%:p")
+  if file == "" then return end
+  local width = math.floor(vim.o.columns * 0.8)
+  require("toggleterm.terminal").Terminal:new({
+    cmd = "LANG=en_US.UTF-8 glow --width " .. width .. " " .. vim.fn.shellescape(file),
+    direction = "float",
+    float_opts = { border = "rounded" },
+    close_on_exit = false,
+  }):toggle()
+end, { desc = "Markdown preview (glow)" })
+
 -- Aerial
 map("n", "{", "<cmd>AerialPrev<CR>", { desc = "" })
 map("n", "}", "<cmd>AerialNext<CR>", { desc = "" })

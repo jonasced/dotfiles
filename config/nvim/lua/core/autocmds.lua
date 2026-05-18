@@ -55,6 +55,17 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.hcl",
 })
 
+-- Open PDFs with the system viewer instead of loading them as a buffer
+api.nvim_create_autocmd("BufReadCmd", {
+  pattern = "*.pdf",
+  callback = function()
+    local path = vim.fn.expand("<afile>:p")
+    vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+    vim.cmd("bdelete")
+  end,
+  group = my_autocmds,
+})
+
 -- Restore :LspRestart (nvim-lspconfig skips registering it on Neovim 0.11+ because
 -- a built-in :lsp command exists, triggering an early return in plugin/lspconfig.lua)
 vim.api.nvim_create_user_command("LspRestart", function()
