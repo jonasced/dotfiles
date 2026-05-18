@@ -159,12 +159,16 @@ map("n", "<leader>tn", "<cmd>lua require('core.utils'):toggle_term_cmd('node')<C
 map("n", "<leader>mp", function()
   local file = vim.fn.expand("%:p")
   if file == "" then return end
-  local width = math.floor(vim.o.columns * 0.8)
   require("toggleterm.terminal").Terminal:new({
-    cmd = "LANG=en_US.UTF-8 glow --width " .. width .. " " .. vim.fn.shellescape(file),
+    cmd = "LANG=en_US.UTF-8 glow --width 300 " .. vim.fn.shellescape(file) .. " | less -SR",
     direction = "float",
-    float_opts = { border = "rounded" },
-    close_on_exit = false,
+    float_opts = {
+      border = "rounded",
+      width = math.floor(vim.o.columns * 0.92),
+      height = math.floor(vim.o.lines * 0.88),
+    },
+    close_on_exit = true,
+    on_open = function() vim.cmd("startinsert!") end,
   }):toggle()
 end, { desc = "Markdown preview (glow)" })
 
