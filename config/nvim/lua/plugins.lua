@@ -297,9 +297,17 @@ return {
     ft = { "markdown" },
     opts = {
       checkbox = {
+        unchecked = {
+          icon = " ", -- 󰄰
+          highlight = "RenderMarkdownTodo"
+        },
+        checked = {
+          icon = " ",
+          highlight = "RenderMarkdownDone"
+        },
         custom = {
-          done = { raw = "[x]", rendered = " ", highlight = "RenderMarkdownDone" },
-          cancelled  = { raw = "[~]", rendered = " ", highlight = "RenderMarkdownCancelled" },
+          cancelled  = { raw = "[~]", rendered = " ", highlight = "RenderMarkdownBackward" },
+          warning = { raw = "[!]", rendered = " ", highlight = "RenderMarkdownCancelled" },
           forwarded  = { raw = "[>]", rendered = " ", highlight = "RenderMarkdownForwarded" },
           backward   = { raw = "[<]", rendered = " ", highlight = "RenderMarkdownBackward" },
         },
@@ -307,6 +315,7 @@ return {
     },
     config = function(_, opts)
       vim.api.nvim_set_hl(0, "RenderMarkdownDone", { fg = "#26FF00" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownTodo", { fg = "#00B3FF" })
       vim.api.nvim_set_hl(0, "RenderMarkdownForwarded", { fg = "#e8890c" })
       vim.api.nvim_set_hl(0, "RenderMarkdownBackward", { fg = "#888888" })
       vim.api.nvim_set_hl(0, "RenderMarkdownCancelled", { fg = "#FF0000" })
