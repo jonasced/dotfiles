@@ -30,6 +30,7 @@
 - [x] Fix treesitter crash on Neovim 0.12.1
 - [~] cancelled task
 - [>] postponed task
+- [<] moved back task
 - [ ] kebbe mr clipping bug
 
 ## Nested lists
