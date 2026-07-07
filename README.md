@@ -279,3 +279,18 @@ Host github_certainli
   IdentityFile ~/.ssh/id_certainli_ed25519
 ```
 and then authenticating using git@github_certainli instead for those repos.
+
+# Ghostty
+## Problems running appimage!
+To temporarily disable the binfmt hook (this I've done already):
+bashsudo sh -c 'echo 0 > /proc/sys/fs/binfmt_misc/appimage-type1'
+sudo sh -c 'echo 0 > /proc/sys/fs/binfmt_misc/appimage-type2'
+Then try again:
+bash./Ghostty-1.3.1-x86_64.AppImage --version
+Re-enable afterward:
+bashsudo sh -c 'echo 1 > /proc/sys/fs/binfmt_misc/appimage-type1'
+sudo sh -c 'echo 1 > /proc/sys/fs/binfmt_misc/appimage-type2'
+
+If you'd rather just permanently remove AppImageLauncher since it's clearly causing more harm than good:
+bashsudo apt remove appimagelauncher
+Then reboot and run the Ghostty binary directly. Given it's a static ELF it should just work.
