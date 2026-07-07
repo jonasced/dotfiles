@@ -109,6 +109,23 @@ function M.on_attach(client, bufnr)
     })
   end
 
+  -- rust fixes
+  vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
+    pattern = "*.rs",
+    callback = function(args)
+      vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+    end,
+  })
+  vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+    if client:supports_method("inlayHint/resolve") then
+      vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+    end
+  end,
+  })
+
   -- hover
   if capabilities.hoverProvider then
     map("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "Hover documentation" })
