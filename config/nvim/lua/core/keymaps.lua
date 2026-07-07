@@ -76,6 +76,12 @@ local cmd = vim.cmd -- execute vimscript commands
 -- end
 --
 -- map("n", "<leader>gg", [[<Cmd>lua StartLazygit()<CR>]], { noremap = true, silent = true })
+
+-- Rust inlay hints
+map("n", "<leader>ih", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+end, { desc = "Toggle inlay hints" })
+
 -- Old lazygit simple
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", {desc = "Open lazygit"})
 
