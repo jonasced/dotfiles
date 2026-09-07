@@ -25,10 +25,12 @@ if [ "$COMMAND" = "bbb" ]; then
     ARCH="armv7-unknown-linux-gnueabihf"
     FEATURES="--no-default-features --features ehub1"
     COMMAND="zigbuild --target=$ARCH --release $FEATURES"
+    TARGET_FOLDER="/work/jonas/"
 elif [ "$COMMAND" = "core" ]; then
     ARCH="aarch64-unknown-linux-gnu"
-    FEATURES="--no-default-features --features ehub2"
+    FEATURES="--no-default-features "
     COMMAND="zigbuild --target=$ARCH --release $FEATURES"
+    TARGET_FOLDER="/data/dev/jonas/"
 fi
 
 echo "Push local changes to remote without CI step..."
@@ -57,6 +59,6 @@ echo 'Running cargo $COMMAND';
 
 if [ "$BINARY" != "" ]; then
     echo "Sending $BINARY to target"
-    scp sonic:/home/jonas/ehubapps/target/$ARCH/release/"$BINARY" "$TARGET":/work/jonas/;
+    scp sonic:/home/jonas/ehubapps/target/$ARCH/release/"$BINARY" "$TARGET":"$TARGET_FOLDER";
     echo "Transfer completed with exit code $?"
 fi
