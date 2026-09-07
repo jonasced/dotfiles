@@ -40,3 +40,8 @@
     line-numbers = true
 [merge]
     # conflictstyle = zdiff3 # not available until git 2.35.1
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
