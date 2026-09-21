@@ -6,8 +6,8 @@
 # or if you're fancy:
 # `scargo bbb taints taintd fe-ace-5927`
 # which is short-hand for
-# `scargo "zigbuild --target=armv7-unknown-linux-gnueabihf --release" yass-rs; scp sonic:/home/jonas/ehubapps/target/armv7-unknown-linux-gnueabihf/release/yass-rs fe-ace-5927:/work/jonas`
-# `scargo "zigbuild --target aarch64-unknown-linux-gnu --release" yass-rs; scp sonic:/home/jonas/target/aarch64-unknown-linux-gnu/release/yass-rs staging-pid-PH10002-P03-X24260011:/data/dev/jonas/; echo $?`
+# `scargo "zigbuild --target=armv7-unknown-linux-gnueabihf --release" yass-rs; scp sonic:/home/jmj/ehubapps/target/armv7-unknown-linux-gnueabihf/release/yass-rs fe-ace-5927:/work/jmj`
+# `scargo "zigbuild --target aarch64-unknown-linux-gnu --release" yass-rs; scp sonic:/home/jmj/target/aarch64-unknown-linux-gnu/release/yass-rs staging-pid-PH10002-P03-X24260011:/data/dev/jmj/; echo $?`
 
 # Cargo command to run remote. bbb/core are special build commands, see below
 COMMAND=$1
@@ -44,18 +44,18 @@ else
 fi
 
 ssh sonic "
-echo 'Navigating to /home/jonas/ehubapps/$FOLDER'
-cd /home/jonas/ehubapps/$FOLDER;
+echo 'Navigating to /home/jmj/ehubapps/$FOLDER'
+cd /home/jmj/ehubapps/$FOLDER;
 echo 'Setting sonic to correct branch and pulling...';
 git fetch
 git checkout $CURRENT_BRANCH;
 git pull
 echo 'Running cargo $COMMAND';
-/home/jonas/.cargo/bin/cargo $COMMAND
+/home/jmj/.cargo/bin/cargo $COMMAND
 "
 
 if [ "$BINARY" != "" ]; then
     echo "Sending $BINARY to target"
-    scp sonic:/home/jonas/ehubapps/target/$ARCH/release/"$BINARY" "$TARGET":/data/dev/jonas/;
+    scp sonic:/home/jmj/ehubapps/target/$ARCH/release/"$BINARY" "$TARGET":/data/dev/jmj/;
     echo "Transfer completed with exit code $?"
 fi

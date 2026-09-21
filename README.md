@@ -67,7 +67,7 @@ rcup -v
 - starship for a nice terminal prompt (https://starship.rs/guide/)
 - ghostty for a experminetal terminal emulator (set gtk-titlebar = false to not have the ugly titlebar)
   - Setup by following https://askubuntu.com/questions/578293/is-it-possible-to-remove-the-default-terminal-and-replace-it-with-some-other-ter
-  - Essentially mapping the terminal emulator of choice to the /home/jonas/bin/ folder with the name gnome-terminal (the default one)
+  - Essentially mapping the terminal emulator of choice to the /home/jmj/bin/ folder with the name gnome-terminal (the default one)
   - to overwrite it.
   - BUG: this does not work! it seems like ghostty runs differently than gnome-terminal, it stays open in the window it is called from
   - BUG: also it appears to not shut down properly: blank window is left after ctrl+d, so quitting is neccessary
@@ -81,7 +81,7 @@ rcup -v
 
 ### Kanata
 Added config for better nvim usage. Run in background:
-`sudo /home/jonas/.cargo/bin/kanata --cfg /home/jonas/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd`
+`sudo /home/jmj/.cargo/bin/kanata --cfg /home/jmj/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd`
 TODO: Add as systemd service if this works nicely. Current workaround is to have a tmux alias for opening misc which calls this.
 - https://github.com/jtroo/kanata/wiki/Avoid-using-sudo-on-Linux
 - https://github.com/jtroo/kanata/discussions/130

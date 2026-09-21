@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Sonic remote command alias
-alias scargo='/home/jonas/.dotfiles/scripts/sonic-cargo'
+alias scargo='/home/jmj/.dotfiles/scripts/sonic-cargo'
 
 # Custom dotfile aliases
-alias ferroamp='/home/jonas/.dotfiles/tmux_ferroamp.sh'
-alias sonic='/home/jonas/.dotfiles/tmux_sonic.sh'
-alias certainli='/home/jonas/.dotfiles/tmux_certainli.sh'
-alias misc='/home/jonas/.dotfiles/tmux_misc.sh'
-alias ferrossh='/home/jonas/.dotfiles/tmux_ferrossh.sh'
-alias kanatastart='sudo /home/jonas/.cargo/bin/kanata --cfg /home/jonas/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd'
+alias ferroamp='/home/jmj/.dotfiles/tmux_ferroamp.sh'
+alias sonic='/home/jmj/.dotfiles/tmux_sonic.sh'
+alias certainli='/home/jmj/.dotfiles/tmux_certainli.sh'
+alias misc='/home/jmj/.dotfiles/tmux_misc.sh'
+alias ferrossh='/home/jmj/.dotfiles/tmux_ferrossh.sh'
+alias kanatastart='sudo /home/jmj/.cargo/bin/kanata --cfg /home/jmj/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd'
 
 # Jira aliases
 alias mywork='jira issue ls -s~Cancelled -s~Done -s~Backlog -a$(jira me) --order-by updated'

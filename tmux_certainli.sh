@@ -9,11 +9,11 @@ if tmux list-sessions | grep $TMUX_ENV; then
   exit
 fi
 
-tmux new-session -s $TMUX_ENV -n backend -c /home/jonas/dev/certainli/ \; \
+tmux new-session -s $TMUX_ENV -n backend -c /home/jmj/dev/certainli/ \; \
   send-keys 'cd certainli-backend' C-m \; \
   send-keys 'nvim .' C-m \; \
-  new-window -n frontend -c /home/jonas/dev/certainli/certainli-frontend/ \; \
+  new-window -n frontend -c /home/jmj/dev/certainli/certainli-frontend/ \; \
   send-keys 'nvim .' C-m \; \
-  new-window -n pyapi -c /home/jonas/dev/certainli/certainli-pyapi/ \; \
+  new-window -n pyapi -c /home/jmj/dev/certainli/certainli-pyapi/ \; \
   send-keys 'eval "$( poetry env activate )"' C-m \; \
   send-keys 'nvim .' C-m \; \

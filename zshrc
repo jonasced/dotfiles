@@ -133,7 +133,7 @@ source $ZSH/oh-my-zsh.sh
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.atlassian-token ]; then
-    export JIRA_API_TOKEN=$(cat /home/jonas/.atlassian-token)
+    export JIRA_API_TOKEN=$(cat /home/jmj/.atlassian-token)
     export EDITOR=vim
 fi
 
