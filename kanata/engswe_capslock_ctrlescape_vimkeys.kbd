@@ -35,7 +35,7 @@ configuration entries.
   caps grv        1   2  3       u   i            [
        d                      h   j   k  l        ;     '
   lsft                                           rsft
-                                        ralt
+                                        ralt f23
 )
 
 ;; Layer that enables switching between default, swedish and meta layer on 1,2,3
@@ -45,35 +45,35 @@ configuration entries.
  @cap  @grv     @dea  @swe  @met    pgdn pgup          (unicode å)
     (unicode Δ)                left down up rght  (unicode ö)  (unicode ä)
   _                                               _
-                                        @ralt
+                                        @ralt @cop
 )
 
 (deflayer default
   @cap @grv   _  _  _          _  _               _
        _                      _  _  _  _        _  _
   _                                              _
-                                       @ralt
+                                       @ralt @cop
 )
 
 (deflayer swedish
   @cap  @grv    _  _  _        _  _              (unicode å)
        _                      _  _  _  _  (unicode ö)  (unicode ä)
   @lsft                                         @rsft
-                                        @ralt
+                                        @ralt @cop
 )
 
 (deflayer swedishUpper
   @cap  @grv    _  _  _        _  _                (unicode Å)
        _                      _  _  _  _  (unicode Ö)  (unicode Ä)
   @lsft                                         @rsft
-                                        @ralt
+                                        @ralt @cop
 )
 
 (deflayer americanSymbols
   @cap @grv   _  _  _          _  _               [
        _                      _  _  _  _      ;     '
   _                                           _
-                                        @ralt
+                                        @ralt @cop
 )
 
 
@@ -99,4 +99,6 @@ configuration entries.
   swe (layer-switch swedish)
   met (layer-switch meta)
 
+  ;; Copilot key sends Super+Shift+F23: drop the Super and Shift it already sent, act as Right Ctrl
+  cop (multi (release-key lmet) (release-key lsft) rctl)
 )
