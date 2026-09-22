@@ -33,7 +33,7 @@ hl.config({
       clickfinger_behavior = true,
 
       -- Control the speed of your scrolling.
-      scroll_factor = 0.4,
+      scroll_factor = 0.2,
 
       -- Enable the touchpad while typing.
       disable_while_typing = false,
