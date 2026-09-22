@@ -32,7 +32,7 @@ configuration entries.
 ;; These are the keys that are affected by re-binding.
 ;; (US-keyboard active assumed)
 (defsrc
-  caps grv        1   2  3       u   i            [
+  caps grv        1   2  3    y   u   i  o          [
        d                      h   j   k  l        ;     '
   lsft                                           rsft
                                         ralt f23
@@ -42,35 +42,35 @@ configuration entries.
 ;; Also has arrow keys mapped to hjkl, adds swedish letters and delta
 ;; Also has pgdn, pgup mapped to ui for easier terminal scrolling
 (deflayer meta
- @cap  @grv     @dea  @swe  @met    pgdn pgup          (unicode å)
+ @cap  @grv     @dea  @swe  @met  home   pgdn pgup   end       (unicode å)
     (unicode Δ)                left down up rght  (unicode ö)  (unicode ä)
   _                                               _
                                         @ralt @cop
 )
 
 (deflayer default
-  @cap @grv   _  _  _          _  _               _
+  @cap @grv   _  _  _          _  _  _ _             _
        _                      _  _  _  _        _  _
   _                                              _
                                        @ralt @cop
 )
 
 (deflayer swedish
-  @cap  @grv    _  _  _        _  _              (unicode å)
+  @cap  @grv    _  _  _        _  _  _ _            (unicode å)
        _                      _  _  _  _  (unicode ö)  (unicode ä)
   @lsft                                         @rsft
                                         @ralt @cop
 )
 
 (deflayer swedishUpper
-  @cap  @grv    _  _  _        _  _                (unicode Å)
+  @cap  @grv    _  _  _        _  _  _ _              (unicode Å)
        _                      _  _  _  _  (unicode Ö)  (unicode Ä)
   @lsft                                         @rsft
                                         @ralt @cop
 )
 
 (deflayer americanSymbols
-  @cap @grv   _  _  _          _  _               [
+  @cap @grv   _  _  _          _  _  _ _             [
        _                      _  _  _  _      ;     '
   _                                           _
                                         @ralt @cop
