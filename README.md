@@ -43,7 +43,7 @@ rcup -v
    - My fork works for this symlink in bash: git@github.com:jonasced/bash-git-prompt.git
 - (porsmo for a nice timer)
 
-- pyenv for handling local python installations
+- ~pyenv for handling local python installations~ replaced with uv
 
 7. For some of the icons you need to setup NerdIcons. See github repository for that
 
