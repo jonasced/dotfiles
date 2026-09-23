@@ -36,7 +36,7 @@ hl.config({
       scroll_factor = 0.2,
 
       -- Enable the touchpad while typing.
-      disable_while_typing = false,
+      disable_while_typing = true,
 
       -- Left-click-and-drag with three fingers.
       drag_3fg = 1,

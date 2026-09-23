@@ -66,7 +66,7 @@ o.bind("SUPER + SHIFT + CTRL + L", "Move workspace to right monitor", hl.dsp.wor
 -- Rehome the plain-SUPER defaults displaced by the focus keys
 o.bind("SUPER + ALT + J", "Toggle window split", hl.dsp.layout("togglesplit"))
 o.bind("SUPER + ALT + SHIFT + K", "Keybindings", "omarchy-menu-keybindings")
-o.bind("SUPER + ALT + SHIFT + L", "Toggle workspace layout", "omarchy-hyprland-workspace-layout-toggle")
+o.bind("SUPER + ALT + L", "Toggle workspace layout", "omarchy-hyprland-workspace-layout-toggle")
 
 -- Logitech MX Keys examples:
 -- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
