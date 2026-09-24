@@ -7,6 +7,13 @@
 # All the default Omarchy aliases and functions
 # (don't mess with these directly, just overwrite them here!)
 source "$OMARCHY_PATH/default/bash/rc"
+#
+# XXX:FIXME workaround for remote terminals not accepting ghostty
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+    export TERM=xterm-256color
+fi
+
+alias ssh='TERM=xterm-256color ssh'
 
 # Add your own exports, aliases, and functions here.
 
