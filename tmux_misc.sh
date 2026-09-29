@@ -9,7 +9,7 @@ if tmux list-sessions | grep $TMUX_ENV; then
 fi
 
 echo "Creating new session"
-tmux new-session -s $TMUX_ENV -n dharma -c /home/jmj/Dropbox/Apps/Obsidian/Dharma/ \; \
+systemd-run --user --scope --slice=session.slice --unit=tmux-misc -- tmux new-session -s $TMUX_ENV -n dharma -c /home/jmj/Dropbox/Apps/Obsidian/Dharma/ \; \
   send-keys 'nvim .' C-m \; \
   split-window -v -p 10 \; \
   select-pane -t 1 \; \

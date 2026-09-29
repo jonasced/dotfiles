@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Restart wayland
+alias restartwayland='systemctl --user restart wayland-wm@hyprland.desktop.service'
+
 # Sonic remote command alias
 alias scargo='/home/jmj/.dotfiles/scripts/sonic-cargo'
 

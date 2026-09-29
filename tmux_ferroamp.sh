@@ -8,7 +8,7 @@ if tmux list-sessions | grep $TMUX_ENV; then
   exit
 fi
 
-tmux new-session -s $TMUX_ENV -n ehubapps -c /home/jmj/dev/ferroamp/ \; \
+systemd-run --user --scope --slice=session.slice --unit=tmux-ferroamp -- tmux new-session -s $TMUX_ENV -n ehubapps -c /home/jmj/dev/ferroamp/ \; \
   send-keys 'cd ehubapps/poetry-lock-ehub2/' C-m \; \
   send-keys 'eval "$( poetry env activate )"' C-m \; \
   send-keys 'cd ..' C-m \; \
