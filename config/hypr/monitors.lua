@@ -7,7 +7,8 @@ local omarchy_monitor_scale = 1.6
 local above_laptop_position = "-920x-1440"
 
 hl.env("GDK_SCALE", tostring(omarchy_gdk_scale))
-hl.monitor({ output = "", mode = "preferred", position = "auto", scale = omarchy_monitor_scale })
+
+-- hl.monitor({ output = "", mode = "preferred", position = "auto", scale = omarchy_monitor_scale })
 
 -- Laptop panel anchored at the origin.
 hl.monitor({ output = "eDP-1", mode = "2560x1600@165", position = "0x0", scale = omarchy_monitor_scale })
@@ -19,7 +20,10 @@ hl.monitor({ output = "eDP-1", mode = "2560x1600@165", position = "0x0", scale =
 -- hl.monitor({ output = "HDMI-A-1", mode = "2560x1440@59.95", position = above_laptop_position, scale = 1 })
 
 -- home display
-hl.monitor({ output = "DP-8", mode = "2560x1440@74.97", position = above_laptop_position, scale = omarchy_monitor_scale })
+hl.monitor({ output = "DP-8", mode = "2560x1440@59.95", position = "-480x-1600", scale = omarchy_monitor_scale })
+
+-- phantom disabling
+hl.monitor({ output = "HDMI-A-1", disabled = true})
 
 -- HOW TO ADD A NEW DISPLAY
 -- hyprctl monitors
