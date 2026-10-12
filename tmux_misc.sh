@@ -8,12 +8,12 @@ if tmux list-sessions | grep $TMUX_ENV; then
   exit
 fi
 
+  # split-window -v -p 10 \; \
+  # select-pane -t 1 \; \
+  # send-keys 'porsmo' C-m \; \
 echo "Creating new session"
 systemd-run --user --scope --slice=session.slice --unit=tmux-misc -- tmux new-session -s $TMUX_ENV -n dharma -c /home/jmj/Dropbox/Apps/Obsidian/Dharma/ \; \
   send-keys 'nvim .' C-m \; \
-  split-window -v -p 10 \; \
-  select-pane -t 1 \; \
-  send-keys 'porsmo' C-m \; \
   new-window -n dotfiles -t 8 -c /home/jmj/.dotfiles/ \; \
   send-keys 'nvim .' C-m \; \
   new-window -n kanata -t 9 \; \

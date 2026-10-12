@@ -13,15 +13,15 @@ systemd-run --user --scope --slice=session.slice --unit=tmux-ferroamp -- tmux ne
   send-keys 'eval "$( poetry env activate )"' C-m \; \
   send-keys 'cd ..' C-m \; \
   send-keys 'nvim .' C-m \; \
+  new-window -n ferro-schemas -c /home/jmj/dev/ferroamp/ferro-schemas/ \; \
+  send-keys 'nvim .' C-m \; \
+  new-window -n ferroamp-os -c /home/jmj/dev/ferroamp/ferroamp-os/ \; \
+  send-keys 'nvim .' C-m \; \
   new-window -n ferroai -c /home/jmj/dev/ferroamp/ferroamp-optimization-algorithms/ \; \
   send-keys 'source .venv/bin/activate' C-m \; \
   send-keys 'nvim .' C-m \; \
   new-window -n ferroai -c /home/jmj/dev/ferroamp/ferroamp-optimization-algorithms-2/ \; \
   send-keys 'source .venv/bin/activate' C-m \; \
-  send-keys 'nvim .' C-m \; \
-  new-window -n ferro-schemas -c /home/jmj/dev/ferroamp/ferro-schemas/ \; \
-  send-keys 'nvim .' C-m \; \
-  new-window -n ferroamp-os -c /home/jmj/dev/ferroamp/ferroamp-os/ \; \
   send-keys 'nvim .' C-m \; \
   new-window -n cont-deploy -c /home/jmj/dev/ferroamp/ferroamp-os-continuous-deploy/ \; \
   send-keys 'nvim .' C-m \; \
