@@ -95,19 +95,31 @@ local laptop = monitor({
   position = { 0, 0 },
 })
 
--- -- home display: above the laptop, centered
+-- -- standup-display: above the laptop, centered
 -- monitor({
---   output = "DP-8", mode = "2560x1440@59.95", scale = 1.25,
+--   output = "DP-10", mode = "4096x2160@59.94Hz", scale = 1.25,
 --   next_to = laptop, side = "above", align = "center",
 -- })
--- -- home display phantom monitor
-hl.monitor({ output = "HDMI-A-1", disabled = false})
 
-hl.monitor({ output = "HDMI-A-1", mode = "3440x1440@59.97", position = "-920x1440", scale = 1 })
-
--- work display
+-- bright future: above the laptop, centered
 monitor({
-  output = "HDMI-A-1", mode = "3440x1440@59.97", scale = 1,
+  output = "DP-8", mode = "1920x1080@60.00Hz", scale = 1.25,
+  next_to = laptop, side = "above", align = "center",
+})
+
+-- home display: above the laptop, centered
+-- monitor({
+--   output = "DP-9", mode = "2560x1440@59.95", scale = 1.25,
+--   next_to = laptop, side = "above", align = "center",
+-- })
+-- home display phantom monitor
+-- hl.monitor({ output = "HDMI-A-1", disabled = true})
+
+-- hl.monitor({ output = "HDMI-A-1", mode = "3440x1440@59.97", position = "-920x1440", scale = 1 })
+
+-- -- work display
+monitor({
+  output = "HDMI-A-1", mode = "3440x1440@59.97", scale = 1.25,
   next_to = laptop, side = "above", align = "center",
 })
 
@@ -116,7 +128,7 @@ monitor({
 --   output = "HDMI-A-1", mode = "2560x1440@59.95", scale = 1,
 --   next_to = laptop, side = "above", align = "center",
 -- })
-
+--
 -- EXAMPLES:
 -- Chain monitors: a portrait screen to the right of the home display, top edges flush
 -- local home = monitor({ output = "DP-8", ..., next_to = laptop, side = "above" })
