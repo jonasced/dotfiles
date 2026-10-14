@@ -157,6 +157,7 @@ fi
 
 eval "$(starship init bash)"
 
+export FERROAMP_PATH="$HOME/dev/ferroamp/"
 # Created by `pipx` on 2025-06-04 09:27:25
 export PATH="$PATH:/home/jmj/.local/bin"
 

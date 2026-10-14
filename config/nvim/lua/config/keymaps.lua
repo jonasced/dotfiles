@@ -26,3 +26,7 @@ map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { desc = "ToggleTe
 map("n", "<leader>ts", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "ToggleTerm horizontal split" })
 map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", { desc = "ToggleTerm vertical split" })
 map("n", "<leader>tp", "<cmd>lua require('core.utils'):toggle_term_cmd('python')<CR>", { desc = "ToggleTerm python" })
+
+
+-- Git
+map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Git status" })

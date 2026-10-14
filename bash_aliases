@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Restart wayland
+# Restart wayland only, keep user running
+# Combined with systemd-run --user --scope --slice=session.slice --unit=tmux-ferroamp -- tmux new-session -s ... 
+# from tmux_xxx scripts this only restarts the graphical interface and not the tmux sessions I'm running
+# Requires Linger=yes, set by loginctl enable-linger <USER> 2>&1
 alias restartwayland='systemctl --user restart wayland-wm@hyprland.desktop.service'
 
 # Sonic remote command alias

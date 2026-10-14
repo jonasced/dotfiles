@@ -96,16 +96,16 @@ local laptop = monitor({
 })
 
 -- -- standup-display: above the laptop, centered
--- monitor({
---   output = "DP-10", mode = "4096x2160@59.94Hz", scale = 1.25,
---   next_to = laptop, side = "above", align = "center",
--- })
-
--- bright future: above the laptop, centered
 monitor({
-  output = "DP-8", mode = "1920x1080@60.00Hz", scale = 1.25,
+  output = "DP-9", mode = "3840x2160@30.00", scale = 1.25,
   next_to = laptop, side = "above", align = "center",
 })
+
+-- bright future: above the laptop, centered
+-- monitor({
+--   output = "DP-8", mode = "1920x1080@60.00Hz", scale = 1.25,
+--   next_to = laptop, side = "above", align = "center",
+-- })
 
 -- home display: above the laptop, centered
 -- monitor({
