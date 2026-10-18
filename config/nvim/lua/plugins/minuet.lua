@@ -1,3 +1,5 @@
+local completion_auto_show = true
+
 return {
   {
     "milanglacier/minuet-ai.nvim",
@@ -34,6 +36,11 @@ return {
           },
         },
       },
+      completion = {
+        -- a function (rather than a plain boolean) so the <leader>uM toggle
+        -- below can flip it live without reaching into blink.cmp internals
+        menu = { auto_show = function() return completion_auto_show end },
+      },
       keymap = {
         ["<A-y>"] = {
           function(cmp)
@@ -42,5 +49,24 @@ return {
         },
       },
     },
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "VeryLazy",
+        once = true,
+        callback = function()
+          Snacks.toggle
+            .new({
+              name = "Completion Auto-Show",
+              get = function()
+                return completion_auto_show
+              end,
+              set = function(state)
+                completion_auto_show = state
+              end,
+            })
+            :map("<leader>uM")
+        end,
+      })
+    end,
   },
 }
