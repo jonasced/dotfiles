@@ -139,9 +139,6 @@ PS1="$GREEN\h$NO_COLOR:$BLUE\W$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
 # nvim appimage
 export PATH="$PATH:/opt/nvim/"
 
-# Zoxide
-eval "$(zoxide init bash)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -158,12 +155,15 @@ export FERROAMP_PATH="$HOME/dev/ferroamp/"
 # Created by `pipx` on 2025-06-04 09:27:25
 export PATH="$PATH:$HOME/.local/bin"
 
-# NOTE: Atuin should be started LAST: https://github.com/atuinsh/atuin/issues/380
-. "$HOME/.atuin/bin/env"
+# Zoxide
+[ -f "/usr/bin/zoxide" ] && eval "$(zoxide init bash)"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash --disable-up-arrow)"
 
 # Rust env scripts 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+[ -f "$HOME/.atuin/bin/atuin" ] && eval "$(atuin init bash --disable-up-arrow)"
+# NOTE: Atuin should be started LAST: https://github.com/atuinsh/atuin/issues/380
+[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
