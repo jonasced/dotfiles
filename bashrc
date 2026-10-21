@@ -136,9 +136,6 @@ NO_COLOR="\[\033[00m\]"
 # minimalist approach
 PS1="$GREEN\h$NO_COLOR:$BLUE\W$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
 
-
-. "$HOME/.cargo/env"
-
 # nvim appimage
 export PATH="$PATH:/opt/nvim/"
 
@@ -167,4 +164,6 @@ export PATH="$PATH:$HOME/.local/bin"
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash --disable-up-arrow)"
 
-. "$HOME/.local/share/../bin/env"
+# Rust env scripts 
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
