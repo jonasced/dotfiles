@@ -140,7 +140,7 @@ PS1="$GREEN\h$NO_COLOR:$BLUE\W$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
 export PATH="$PATH:/opt/nvim/"
 
 # Zoxide
-eval "$(zoxide init --cmd cd bash)"
+eval "$(zoxide init bash)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
