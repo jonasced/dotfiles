@@ -8,8 +8,13 @@ if tmux list-sessions | grep $TMUX_ENV; then
   exit
 fi
 
-systemd-run --user --scope --slice=session.slice --unit=tmux-ferroamp -- tmux new-session -s $TMUX_ENV -n ehubapps -c /home/jmj/dev/ferroamp/ \; \
+systemd-run --user --scope --slice=session.slice --unit=tmux-ferroamp -- tmux new-session -s $TMUX_ENV -n ehubapps-1 -c /home/jmj/dev/ferroamp/ \; \
   send-keys 'cd ehubapps/poetry-lock-ehub2/' C-m \; \
+  send-keys 'eval "$( poetry env activate )"' C-m \; \
+  send-keys 'cd ..' C-m \; \
+  send-keys 'nvim .' C-m \; \
+  new-window -n ehubapps-2 -c /home/jmj/dev/ferroamp/ehubapps-2/ \; \
+  send-keys 'cd poetry-lock-ehub2/' C-m \; \
   send-keys 'eval "$( poetry env activate )"' C-m \; \
   send-keys 'cd ..' C-m \; \
   send-keys 'nvim .' C-m \; \
@@ -17,10 +22,10 @@ systemd-run --user --scope --slice=session.slice --unit=tmux-ferroamp -- tmux ne
   send-keys 'nvim .' C-m \; \
   new-window -n ferroamp-os -c /home/jmj/dev/ferroamp/ferroamp-os/ \; \
   send-keys 'nvim .' C-m \; \
-  new-window -n ferroai -c /home/jmj/dev/ferroamp/ferroamp-optimization-algorithms/ \; \
+  new-window -n ferroai-1 -c /home/jmj/dev/ferroamp/ferroamp-optimization-algorithms/ \; \
   send-keys 'source .venv/bin/activate' C-m \; \
   send-keys 'nvim .' C-m \; \
-  new-window -n ferroai -c /home/jmj/dev/ferroamp/ferroamp-optimization-algorithms-2/ \; \
+  new-window -n ferroai-2 -c /home/jmj/dev/ferroamp/ferroamp-optimization-algorithms-2/ \; \
   send-keys 'source .venv/bin/activate' C-m \; \
   send-keys 'nvim .' C-m \; \
   new-window -n cont-deploy -c /home/jmj/dev/ferroamp/ferroamp-os-continuous-deploy/ \; \
