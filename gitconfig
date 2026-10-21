@@ -5,6 +5,7 @@
     path = ~/dev/ferroamp/.gitconfig-ferroamp
 [safe]
 	directory = *
+	directory = /srv/sandbox/*
 [core]
 	editor = nvim -f
 [alias]

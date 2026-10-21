@@ -9,6 +9,8 @@ alias restartwayland='systemctl --user restart wayland-wm@hyprland.desktop.servi
 # Sonic remote command alias
 alias scargo='/home/jmj/.dotfiles/scripts/sonic-cargo'
 
+# Custom agent alias
+alias agent='/srv/sandbox/tmux_agent.sh'
 # Custom dotfile aliases
 alias ferroamp='/home/jmj/.dotfiles/tmux_ferroamp.sh'
 alias sonic='/home/jmj/.dotfiles/tmux_sonic.sh'
