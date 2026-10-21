@@ -6,7 +6,7 @@
 
 # All the default Omarchy aliases and functions
 # (don't mess with these directly, just overwrite them here!)
-source "$OMARCHY_PATH/default/bash/rc"
+[[ -n "$OMARCHY_PATH" && -r "$OMARCHY_PATH/default/bash/rc" ]] && source "$OMARCHY_PATH/default/bash/rc"
 #
 # XXX:FIXME workaround for remote terminals not accepting ghostty
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
@@ -159,7 +159,7 @@ eval "$(starship init bash)"
 
 export FERROAMP_PATH="$HOME/dev/ferroamp/"
 # Created by `pipx` on 2025-06-04 09:27:25
-export PATH="$PATH:/home/jmj/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # NOTE: Atuin should be started LAST: https://github.com/atuinsh/atuin/issues/380
 . "$HOME/.atuin/bin/env"

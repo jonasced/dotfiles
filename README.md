@@ -12,7 +12,7 @@ help of a command-line utility [rcm](https://github.com/thoughtbot/rcm). The ste
 2. Clone the repo to your Linux home directory, `~/.`, as follows
 
 ```sh
-git clone https://github.com/oshevtsov/dotfiles.git ~/.dotfiles
+git clone https://github.com/jonasced/dotfiles.git ~/.dotfiles
 ```
 
 3. Go to the cloned directory, `cd ~/.dotfiles`
@@ -77,11 +77,27 @@ rcup -v
       window-decoration = "none"
 
 
+## Portability notes
+
+Most of this repo is plain portable config, but a few pieces are tracked even though they only
+do something useful in a specific context. They're intentionally left as-is rather than removed:
+
+- `config/hypr/*` — Hyprland/[Omarchy](https://omarchy.org) only; inert on anything else.
+- `tmux_ferroamp.sh`, `tmux_sonic.sh`, `tmux_ferrossh.sh`, `scripts/sonic-cargo` — work-specific,
+  expect `~/dev/ferroamp` and internal SSH hosts to exist.
+- `config/nvim/lua/plugins/minuet.lua` — expects a local inference server on `localhost:52625`;
+  harmless no-op otherwise.
+- `config/nvim/lua/config/remote_clipboard.lua` — benefits from `wl-clipboard` (`wl-copy`/`wl-paste`)
+  on Wayland; falls back to OSC52 otherwise.
+- `config/nvim/lua/plugins/theme.lua` reads Omarchy's generated theme file when present
+  (`~/.local/state/omarchy/current/theme/neovim.lua`) and falls back to a static colorscheme
+  otherwise, so Neovim doesn't need Omarchy installed to work.
+
 ## Notes
 
 ### Kanata
 Added config for better nvim usage. Run in background:
-`sudo /home/jmj/.cargo/bin/kanata --cfg /home/jmj/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd`
+`sudo $HOME/.cargo/bin/kanata --cfg $HOME/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd`
 TODO: Add as systemd service if this works nicely. Current workaround is to have a tmux alias for opening misc which calls this.
 - https://github.com/jtroo/kanata/wiki/Avoid-using-sudo-on-Linux
 - https://github.com/jtroo/kanata/discussions/130

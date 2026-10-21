@@ -7,17 +7,16 @@
 alias restartwayland='systemctl --user restart wayland-wm@hyprland.desktop.service'
 
 # Sonic remote command alias
-alias scargo='/home/jmj/.dotfiles/scripts/sonic-cargo'
+alias scargo="$HOME/.dotfiles/scripts/sonic-cargo"
 
 # Custom agent alias
 alias agent='/srv/sandbox/tmux_agent.sh'
 # Custom dotfile aliases
-alias ferroamp='/home/jmj/.dotfiles/tmux_ferroamp.sh'
-alias sonic='/home/jmj/.dotfiles/tmux_sonic.sh'
-alias certainli='/home/jmj/.dotfiles/tmux_certainli.sh'
-alias misc='/home/jmj/.dotfiles/tmux_misc.sh'
-alias ferrossh='/home/jmj/.dotfiles/tmux_ferrossh.sh'
-alias kanatastart='sudo /home/jmj/.cargo/bin/kanata --cfg /home/jmj/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd'
+alias ferroamp="$HOME/.dotfiles/tmux_ferroamp.sh"
+alias sonic="$HOME/.dotfiles/tmux_sonic.sh"
+alias misc="$HOME/.dotfiles/tmux_misc.sh"
+alias ferrossh="$HOME/.dotfiles/tmux_ferrossh.sh"
+alias kanatastart="sudo $HOME/.cargo/bin/kanata --cfg $HOME/.dotfiles/kanata/engswe_capslock_ctrlescape_vimkeys.kbd"
 
 # Jira aliases
 alias mywork='jira issue ls -s~Cancelled -s~Done -s~Backlog -a$(jira me) --order-by updated'
